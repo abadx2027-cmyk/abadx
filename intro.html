@@ -24,7 +24,7 @@ video{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;background:
 <div class="vig"></div><div class="sweep"></div>
 <div class="mark" aria-hidden="true"><img src="assets/abadx-logo.svg" alt=""><h2 class="welcome">مرحباً بك في · Welcome to</h2><h1>Abad X</h1><p>المنصة الرائدة في التعلّم العملي لتقنية المعلومات — The Leading Hands-on IT Learning Platform</p></div>
 <button class="btn" id="skip" type="button">تخطي / Skip</button>
-<button class="btn" id="snd" type="button">🔊 اضغط للصوت / Tap for sound</button>
+
 <script>
 (function(){var v=document.getElementById('v'),snd=document.getElementById('snd'),done=false,shown=false;
 sessionStorage.setItem('abadx_intro_seen','1');
@@ -32,11 +32,11 @@ function go(){if(done)return;done=true;document.body.style.transition='opacity .
 function reveal(){if(!shown){shown=true;document.body.classList.add('on')}}
 document.getElementById('skip').onclick=go;
 addEventListener('keydown',function(e){if(e.key==='Escape')go()});
-snd.onclick=function(){v.muted=false;snd.style.display='none'};
+
 v.addEventListener('timeupdate',function(){if(v.duration&&v.currentTime>=v.duration-2.4)reveal()});
 v.addEventListener('ended',function(){reveal();setTimeout(go,1400)});
 v.addEventListener('error',function(){reveal();setTimeout(go,2500)},true);
-v.muted=false;var p=v.play();
-if(p&&p.catch)p.catch(function(){v.muted=true;snd.style.display='block';v.play().catch(function(){reveal();setTimeout(go,2500)})});
+v.muted=true;var p=v.play();
+if(p&&p.catch)p.catch(function(){v.play().catch(function(){reveal();setTimeout(go,2500)})});
 setTimeout(go,15000);})();
 </script></body></html>
