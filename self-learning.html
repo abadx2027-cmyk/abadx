@@ -1,0 +1,68 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Abad X | تعلّم ذاتي</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="assets/favicon-32.png" sizes="32x32"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/style.css?v=3">
+<style>
+:root{--mono:'JetBrains Mono',ui-monospace,monospace;--b:#38bdf8;--mut:#8aa0c2;--ok:#4ade80}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -10%,rgba(29,111,255,.24),transparent 55%),#03060c;color:var(--txt)}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9;background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 62%,rgba(0,0,0,.8))}
+.topbar{position:relative;z-index:10;display:flex;align-items:center;gap:12px;padding:14px clamp(16px,4vw,40px);font-size:.9rem;color:var(--mut)}
+.topbar img{height:30px}.topbar a{color:#9fb6d8}.topbar a:hover{color:var(--b)}.topbar .crumb{margin-inline-start:6px}
+main{position:relative;z-index:2;max-width:1120px;margin:auto;padding:20px clamp(16px,4vw,40px) 70px}
+.head{text-align:center;margin:10px auto 36px}
+.head h1{margin:0;font-size:clamp(1.8rem,5vw,2.8rem)}.head h1 .en{display:block;font-family:var(--mono);font-size:1rem;color:var(--mut);letter-spacing:.12em;margin-top:6px}
+.head p{color:#bcd3f5;max-width:640px;margin:14px auto 0;line-height:1.9}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
+.room{position:relative;display:block;color:#dbeafe;padding:22px;border-radius:18px;background:rgba(10,18,34,.66);backdrop-filter:blur(12px);border:1px solid rgba(56,189,248,.2);box-shadow:inset 0 0 30px rgba(47,140,255,.05);transition:transform .25s,border-color .25s,box-shadow .25s}
+.room:hover,.room:focus-visible{transform:translateY(-4px);border-color:var(--b);box-shadow:0 0 40px rgba(56,189,248,.3);outline:none}
+.room .ic{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.3);margin-bottom:14px}
+.room .ic svg{width:30px;height:30px;fill:none;stroke:var(--b);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.room h2{margin:0;font-size:1.3rem}.room h2 .en{display:block;font-family:var(--mono);font-size:.78rem;color:var(--mut);direction:ltr;text-align:right;margin-top:2px}
+.room p{color:#a9c3e6;margin:10px 0 0;line-height:1.8;font-size:.92rem}
+.rmeta{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 12px}
+.pill{font-size:.74rem;border:1px solid rgba(120,160,220,.28);border-radius:999px;padding:3px 10px;color:#bcd3f5}
+.pill.dif{border-color:var(--ok);color:var(--ok)}
+.pbar{height:7px;border-radius:99px;background:rgba(56,189,248,.12);overflow:hidden}
+.pbar i{display:block;height:100%;background:linear-gradient(90deg,#2563eb,#38bdf8);box-shadow:0 0 10px var(--b);transition:width .6s}
+.pct{display:flex;justify-content:space-between;font-size:.74rem;color:var(--mut);font-family:var(--mono);margin-top:6px}
+.done-badge{position:absolute;top:16px;left:16px;font-size:.72rem;color:var(--ok);border:1px solid var(--ok);border-radius:999px;padding:2px 10px;display:none}
+.room.done .done-badge{display:inline-block}
+.soon{opacity:.55;pointer-events:none}.soon .ic svg{stroke:var(--mut)}
+.soon-tag{position:absolute;top:16px;left:16px;font-size:.72rem;color:var(--mut);border:1px dashed #2a476f;border-radius:999px;padding:2px 10px}
+footer{position:relative;z-index:2;text-align:center;color:#51688c;font-size:.8rem;padding:24px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body>
+<nav class="topbar"><img src="assets/abadx-logo.svg" alt="Abad X"><span class="crumb"><a href="portal.html">البوابة</a> / <span aria-current="page">تعلّم ذاتي</span></span></nav>
+<main>
+<header class="head"><h1>تعلّم ذاتي <span class="en">Self-Learning</span></h1>
+<p>غرف تدريب عملية تفاعلية — تعلّم بالممارسة داخل طرفية حقيقية محاكاة، وحلّ المهام والتقط الأعلام. اختر غرفة وابدأ رحلتك.</p></header>
+<section class="grid" id="rooms" aria-label="الغرف المتاحة"></section>
+</main>
+<footer>© 2026 Abad X</footer>
+<script>
+const ROOMS=[
+ {id:'linux-fundamentals',ar:'أساسيات لينكس',en:'Linux Fundamentals',dif:['مبتدئ','Beginner'],min:45,tasks:7,
+  desc:'تنقّل في نظام الملفات، اقرأ وأدِر الملفات، ابحث داخلها، وافهم الصلاحيات — والتقط الأعلام من الطرفية المدمجة.',
+  icon:'<path d="M9 3h6l1 4a7 7 0 0 1 2 5v4a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-4a7 7 0 0 1 2-5z"/><circle cx="10" cy="11" r="1.1"/><circle cx="14" cy="11" r="1.1"/><path d="M10.5 15h3"/>'},
+ {id:'',ar:'أساسيات الشبكات',en:'Networking Basics',dif:['مبتدئ','Beginner'],min:50,tasks:0,soon:true,
+  desc:'نماذج OSI/TCP-IP، العناوين والمنافذ، وأساسيات التحليل — قريباً.',
+  icon:'<circle cx="12" cy="5" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M12 7v4M11 12 6.5 16M13 12l4.5 4"/>'},
+ {id:'',ar:'مدخل إلى الويب',en:'Web Fundamentals',dif:['مبتدئ','Beginner'],min:55,tasks:0,soon:true,
+  desc:'HTTP، الطلبات والاستجابات، وبنية تطبيقات الويب — قريباً.',
+  icon:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'}
+];
+const wrap=document.getElementById('rooms');
+wrap.innerHTML=ROOMS.map(r=>{
+ if(r.soon)return `<div class="room soon"><span class="soon-tag">قريباً · Soon</span><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true">${r.icon}</svg></span><h2>${r.ar} <span class="en">${r.en}</span></h2><p>${r.desc}</p><div class="rmeta"><span class="pill dif">● ${r.dif[0]}</span><span class="pill">⏱ ${r.min} د</span></div></div>`;
+ let pct=0;try{const st=JSON.parse(localStorage.getItem('abadx_room_'+r.id)||'{}');const solved=st.solved||{};const done=Object.keys(solved).length;pct=st.complete?100:0;
+  // compute by tasks done is complex; approximate via complete flag or solved ratio stored
+  if(window.ABADX_ROOM_META&&window.ABADX_ROOM_META[r.id]){}
+ }catch(e){}
+ const st=JSON.parse(localStorage.getItem('abadx_room_'+r.id)||'{}');
+ const prog=st.complete?100:(st.pts&&st.maxpts?Math.round(st.pts/st.maxpts*100):(st.solved?Math.min(99,Math.round(Object.keys(st.solved).length/16*100)):0));
+ const done=prog>=100;
+ return `<a class="room${done?' done':''}" href="room.html?r=${r.id}"><span class="done-badge">مكتملة ✓</span><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true">${r.icon}</svg></span>
+  <h2>${r.ar} <span class="en">${r.en}</span></h2><p>${r.desc}</p>
+  <div class="rmeta"><span class="pill dif">● ${r.dif[0]} · ${r.dif[1]}</span><span class="pill">⏱ ${r.min} دقيقة</span><span class="pill">${r.tasks} مهام</span></div>
+  <div class="pbar"><i style="width:${prog}%"></i></div><div class="pct"><span>التقدّم</span><span>${prog}%</span></div></a>`;
+}).join('');
+</script></body></html>

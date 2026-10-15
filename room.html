@@ -1,0 +1,261 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Abad X | غرفة تعلّم</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=3">
+<style>
+:root{--mono:'JetBrains Mono',ui-monospace,monospace;--b:#38bdf8;--b2:#2563eb;--mut:#8aa0c2;--ok:#4ade80;--no:#f87171;--panel:rgba(10,18,34,.72)}
+body{margin:0;background:radial-gradient(ellipse at 50% -8%,rgba(29,111,255,.22),transparent 55%),#03060c;color:var(--txt)}
+a{color:var(--b)}
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:14px;padding:12px clamp(14px,3vw,34px);background:rgba(3,6,12,.82);backdrop-filter:blur(8px);border-bottom:1px solid rgba(56,189,248,.14)}
+.top img{height:30px}.top .sp{margin-inline-start:auto;display:flex;gap:10px;align-items:center}
+.lnk{font-size:.85rem;color:#9fb6d8;border:1px solid #16325c;border-radius:8px;padding:5px 12px}.lnk:hover{color:var(--b);border-color:var(--b)}
+.wrap{display:grid;grid-template-columns:1fr minmax(360px,440px);gap:22px;max-width:1340px;margin:auto;padding:20px clamp(14px,3vw,34px) 60px;align-items:start}
+/* hero */
+.hero{background:linear-gradient(150deg,rgba(15,30,60,.6),rgba(5,10,22,.5));border:1px solid rgba(56,189,248,.28);border-radius:20px;padding:22px 24px;box-shadow:0 0 40px rgba(37,99,235,.12);display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.hex{flex:none;width:70px;height:70px;filter:drop-shadow(0 0 12px rgba(56,189,248,.6))}
+.hex svg{width:100%;height:100%}
+.hhead{flex:1;min-width:220px}.hhead h1{margin:0;font-size:clamp(1.4rem,3vw,2rem)}.hhead .en{font-family:var(--mono);color:var(--mut);font-size:.9rem;direction:ltr;text-align:right;display:block}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.pill{font-size:.78rem;border:1px solid rgba(120,160,220,.28);border-radius:999px;padding:3px 11px;color:#bcd3f5;display:inline-flex;gap:5px;align-items:center}
+.pill.dif{border-color:var(--ok);color:var(--ok)}.pill.pts{border-color:var(--b);color:var(--b);font-family:var(--mono)}
+.ring{flex:none;display:grid;place-items:center;position:relative;width:92px;height:92px}
+.ring svg{transform:rotate(-90deg)}.ring .bg2{stroke:rgba(56,189,248,.14)}.ring .fg{stroke:url(#rg);stroke-linecap:round;transition:stroke-dashoffset .7s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 0 6px rgba(56,189,248,.7))}
+.ring b{position:absolute;font-family:var(--mono);font-size:1.1rem;color:#dff1ff}.ring small{position:absolute;margin-top:34px;font-size:.6rem;color:var(--mut);letter-spacing:.1em}
+/* tasks */
+.intro{margin:18px 0 10px;color:#bcd3f5;line-height:1.9}
+.task{border:1px solid rgba(120,160,220,.16);border-radius:16px;margin:14px 0;overflow:hidden;background:var(--panel);backdrop-filter:blur(8px)}
+.task.done{border-color:rgba(74,222,128,.5);box-shadow:0 0 22px rgba(74,222,128,.12)}
+.thead{display:flex;align-items:center;gap:12px;width:100%;text-align:start;background:none;border:0;color:var(--txt);font:inherit;padding:16px 18px;cursor:pointer}
+.tnum{flex:none;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-family:var(--mono);font-weight:700;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.3);color:var(--b)}
+.task.done .tnum{background:rgba(74,222,128,.14);border-color:var(--ok);color:var(--ok)}
+.thead h2{margin:0;font-size:1.08rem;flex:1}.thead h2 .en{display:block;font-family:var(--mono);font-size:.74rem;color:var(--mut);direction:ltr;text-align:right}
+.chk{flex:none;width:22px;height:22px;opacity:.25}.task.done .chk{opacity:1}
+.chev{flex:none;transition:transform .3s;color:var(--mut)}.task.open .chev{transform:rotate(180deg)}
+.tbody{display:none;padding:0 18px 18px;border-top:1px solid rgba(120,160,220,.12)}
+.task.open .tbody{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-6px)}}
+.tbody h3{color:#dff1ff;margin:16px 0 6px;font-size:1rem}
+.tbody p{margin:6px 0;color:#c3d6f0;line-height:1.95}
+.code{position:relative;direction:ltr;text-align:left;font-family:var(--mono);font-size:.85rem;background:#02070f;border:1px solid rgba(56,189,248,.22);border-radius:10px;padding:12px 14px;margin:10px 0;color:#a5e4ff;white-space:pre-wrap;overflow:auto}
+.cpy{position:absolute;top:8px;right:8px;font-family:Cairo;font-size:.72rem;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.3);color:#bcd3f5;border-radius:7px;padding:3px 9px;cursor:pointer}
+.cpy:hover{color:#fff;border-color:var(--b)}
+.call{border-radius:10px;padding:11px 14px;margin:10px 0;border:1px solid;display:flex;gap:9px;line-height:1.8}
+.call.tip{border-color:rgba(56,189,248,.35);background:rgba(56,189,248,.07);color:#cfeaff}
+.call.warn{border-color:rgba(248,180,90,.4);background:rgba(248,150,70,.08);color:#ffdfb8}
+.call b{flex:none}
+.q{border:1px solid rgba(120,160,220,.16);border-radius:12px;padding:14px;margin:12px 0;background:rgba(2,8,18,.4);transition:box-shadow .25s,border-color .25s}
+.q.ok{border-color:var(--ok);box-shadow:0 0 0 1px var(--ok),0 0 24px rgba(74,222,128,.25)}
+.q.shake{animation:shake .4s}@keyframes shake{25%{transform:translateX(7px)}50%{transform:translateX(-6px)}75%{transform:translateX(4px)}}
+.q p.qt{margin:0 0 10px;color:#eaf4ff}
+.qrow{display:flex;gap:8px;flex-wrap:wrap}
+.qrow input{flex:1;min-width:160px;font:inherit;font-family:var(--mono);direction:ltr;text-align:left;background:#02070f;border:1px solid rgba(120,160,220,.3);color:#eaf4ff;border-radius:9px;padding:9px 12px}
+.qrow input:focus{outline:none;border-color:var(--b);box-shadow:0 0 0 2px rgba(56,189,248,.3)}
+.qrow input:disabled{opacity:.7;border-color:var(--ok)}
+.sub{font:inherit;font-weight:700;background:linear-gradient(90deg,var(--b2),var(--b));color:#00121f;border:0;border-radius:9px;padding:9px 18px;cursor:pointer}
+.sub:disabled{background:rgba(74,222,128,.2);color:var(--ok);cursor:default}
+.fb{font-size:.84rem;margin:8px 0 0;min-height:1.2em}.fb.g{color:var(--ok)}.fb.r{color:var(--no)}
+.hintbtn{background:none;border:1px dashed rgba(120,160,220,.4);color:#9fb6d8;font:inherit;font-size:.78rem;border-radius:7px;padding:4px 10px;cursor:pointer;margin-top:8px}
+.hintbtn:hover{border-color:var(--b);color:var(--b)}
+.hinttext{margin:8px 0 0;font-size:.82rem;color:#ffe2b0;background:rgba(248,150,70,.08);border:1px solid rgba(248,180,90,.3);border-radius:8px;padding:8px 11px;display:none}
+.hinttext.show{display:block}
+/* terminal */
+.tp{position:sticky;top:70px}
+.term-wrap{background:#02070f;border:1px solid rgba(56,189,248,.4);border-radius:14px;overflow:hidden;box-shadow:0 0 36px rgba(56,189,248,.18),inset 0 0 30px rgba(37,99,235,.08)}
+.tbar{display:flex;gap:6px;align-items:center;padding:9px 13px;border-bottom:1px solid rgba(56,189,248,.16);direction:ltr;font-family:var(--mono);font-size:.74rem;color:var(--mut)}
+.tbar i{width:10px;height:10px;border-radius:50%;background:#1e3a5f}.tbar i:first-child{background:var(--b)}.tbar span{margin-inline-start:auto}
+.term{direction:ltr;text-align:left;font-family:var(--mono);font-size:.82rem;color:#d6ecff;line-height:1.65;padding:12px 14px;height:460px;overflow:auto;white-space:pre-wrap;word-break:break-word}
+.term .pr{color:var(--b)}.term .er{color:var(--no)}.term .fl{color:#fde68a}.term .mut{color:#5b7396}
+.tinput{display:flex;align-items:center;gap:7px;direction:ltr;border-top:1px solid rgba(56,189,248,.16);padding:9px 12px;font-family:var(--mono)}
+.tinput .pr{color:var(--b);white-space:nowrap;font-size:.82rem}
+.tinput input{flex:1;background:none;border:0;color:#eaf4ff;font:inherit;font-size:.82rem;outline:none}
+.scan:after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 3px)}
+.term-wrap{position:relative}
+.toggle{display:none}
+/* completion */
+.cel{position:fixed;inset:0;z-index:60;display:none;place-items:center;background:rgba(2,6,14,.82);backdrop-filter:blur(6px)}
+.cel.show{display:grid}
+.cel .box{text-align:center;max-width:440px;padding:36px 28px;border:1px solid var(--b);border-radius:22px;background:linear-gradient(160deg,rgba(15,30,60,.9),rgba(5,10,22,.95));box-shadow:0 0 60px rgba(56,189,248,.4);animation:pop .5s cubic-bezier(.2,.9,.3,1.3)}
+@keyframes pop{from{opacity:0;transform:scale(.8)}}
+.badge{width:120px;height:120px;margin:0 auto 14px;filter:drop-shadow(0 0 18px rgba(56,189,248,.8));animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cel h2{margin:6px 0;font-size:1.7rem}.cel p{color:#bcd3f5}
+.cel .cta{display:inline-block;margin-top:14px;font-weight:700;background:linear-gradient(90deg,var(--b2),var(--b));color:#00121f;border-radius:10px;padding:11px 22px}
+.cel .cta.s{background:none;border:1px solid var(--b);color:#cfe6ff;margin-inline-start:8px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:980px){.wrap{grid-template-columns:1fr}.tp{position:static}.toggle{display:inline-flex}
+ .tp.drawer{position:fixed;inset:auto 0 0 0;z-index:40;max-height:78vh;background:#03060c;border-top:1px solid var(--b);border-radius:16px 16px 0 0;padding:10px;transform:translateY(102%);transition:transform .35s;box-shadow:0 -10px 40px rgba(0,0,0,.6)}
+ .tp.drawer.open{transform:none}.term{height:46vh}}
+.still *{animation:none!important;transition:none!important}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style></head><body>
+<header class="top"><img src="assets/abadx-logo.svg" alt="Abad X">
+<div class="sp"><button class="lnk toggle" id="tgl" aria-expanded="false">⌨ الطرفية · Terminal</button><a class="lnk" href="self-learning.html">→ الغرف · Rooms</a><a class="lnk" href="portal.html">البوابة · Portal</a></div></header>
+<div class="wrap">
+<main id="main">
+<section class="hero" id="hero"></section>
+<p class="intro" id="intro"></p>
+<div class="sr" aria-live="polite" id="live"></div>
+<div id="tasks"></div>
+</main>
+<aside class="tp" id="tp" aria-label="الطرفية المحاكاة">
+<div class="term-wrap scan"><div class="tbar"><i></i><i></i><i></i><span id="tbt">student@abadx:~</span></div>
+<div class="term" id="term" role="log" aria-label="مخرجات الطرفية"></div>
+<form class="tinput" id="tform"><span class="pr" id="tpr">student@abadx:~$</span><input id="tin" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="أدخل أمراً"></form></div>
+</aside>
+</div>
+<div class="cel" id="cel" role="dialog" aria-modal="true" aria-labelledby="celh"><div class="box">
+<svg class="badge" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs>
+<polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="#06101f" stroke="url(#bg)" stroke-width="3"/><polygon points="50,18 78,34 78,66 50,82 22,66 22,34" fill="none" stroke="#38bdf8" stroke-opacity=".4"/><path d="M36 51 46 61 66 39" fill="none" stroke="#7dd3fc" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<h2 id="celh">الغرفة مكتملة! 🎉</h2><p>أتممت <b>أساسيات لينكس</b> · Linux Fundamentals<br><span id="celp"></span></p>
+<a class="cta" href="self-learning.html">غرف أخرى · More rooms</a><a class="cta s" href="#" id="celclose">متابعة · Stay</a></div></div>
+<svg width="0" height="0"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#38bdf8"/></linearGradient></defs></svg>
+<script src="assets/rooms/linux-fundamentals.js?v=1"></script>
+<script>
+(()=>{
+const still=/[?&]still\b/.test(location.search)||matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(still)document.documentElement.classList.add('still');
+const R=window.ABADX_ROOM;if(!R){document.getElementById('intro').textContent='تعذّر تحميل الغرفة.';return}
+document.title='Abad X | '+R.ar;
+const $=s=>document.querySelector(s),ce=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+const TOTAL=R.tasks.reduce((a,t)=>a+t.questions.reduce((b,q)=>b+q.pts,0),0);
+const KEY='abadx_room_'+R.id;
+let st=JSON.parse(localStorage.getItem(KEY)||'{}');st.solved=st.solved||{};st.hints=st.hints||{};st.pts=st.pts|0;
+st.maxpts=TOTAL;const save=()=>localStorage.setItem(KEY,JSON.stringify(st));
+const norm=s=>s.toLowerCase().trim().replace(/\s+/g,' ');
+async function sha(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(norm(s)));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+// ---- hero ----
+function taskDone(t){return t.questions.every((q,i)=>st.solved[t.n+'.'+i])}
+function doneCount(){return R.tasks.filter(taskDone).length}
+function renderHero(){const H=$('#hero');const prog=TOTAL?Math.round(st.pts/TOTAL*100):0;const C=2*Math.PI*40;
+H.innerHTML=`<div class="hex"><svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${R.icon}</svg></div>
+<div class="hhead"><h1>${R.ar} <span class="en">${R.en}</span></h1>
+<div class="meta"><span class="pill dif">● ${R.difficulty[0]} · ${R.difficulty[1]}</span><span class="pill">⏱ ${R.minutes} دقيقة</span><span class="pill pts">${st.pts} / ${TOTAL} pts</span>${R.tags.map(t=>'<span class="pill">#'+t+'</span>').join('')}</div></div>
+<div class="ring"><svg width="92" height="92"><circle class="bg2" cx="46" cy="46" r="40" fill="none" stroke-width="7"/><circle class="fg" cx="46" cy="46" r="40" fill="none" stroke-width="7" stroke-dasharray="${C}" stroke-dashoffset="${C-C*prog/100}"/></svg><b>${prog}%</b><small>${doneCount()}/${R.tasks.length} مهام</small></div>`;}
+$('#intro').textContent=R.intro;
+// ---- tasks ----
+const TASKS=$('#tasks');
+function bodyHTML(b){return b.map(x=>{
+ if(x.h)return`<h3>${x.h}</h3>`;if(x.p)return`<p>${x.p}</p>`;
+ if(x.code)return`<div class="code"><button class="cpy" type="button">نسخ · Copy</button>${esc(x.code.replace(/\\n/g,'\n'))}</div>`;
+ if(x.tip)return`<div class="call tip"><b>💡 تلميح</b><span>${x.tip}</span></div>`;
+ if(x.warn)return`<div class="call warn"><b>⚠ تنبيه</b><span>${x.warn}</span></div>`;return''}).join('')}
+R.tasks.forEach(t=>{
+ const done=taskDone(t);
+ const el=ce('div','task'+(done?' done':''));el.id='task'+t.n;
+ el.innerHTML=`<button class="thead" aria-expanded="false"><span class="tnum">${t.n}</span>
+  <h2>${t.ar} <span class="en">Task ${t.n} · ${t.en}</span></h2>
+  <svg class="chk" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" stroke="#4ade80" stroke-width="1.6"/><path d="M8 12.5 11 15.5 16 9"/></svg>
+  <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+  <div class="tbody">${bodyHTML(t.body)}${t.questions.map((q,i)=>{const sv=st.solved[t.n+'.'+i];
+   return`<div class="q${sv?' ok':''}" id="q${t.n}_${i}"><p class="qt">${q.q} <span style="color:var(--b);font-family:var(--mono)">(+${q.pts})</span></p>
+    <div class="qrow"><input aria-label="${esc(q.q)}" placeholder="${q.ph||''}" ${sv?'disabled value="✓ إجابة صحيحة"':''}><button class="sub" ${sv?'disabled':''}>${sv?'تم ✓':'تحقّق · Submit'}</button></div>
+    <p class="fb" aria-live="polite"></p>
+    ${q.hint?`<button class="hintbtn" type="button">💡 تلميح (−5 نقاط)</button><p class="hinttext${st.hints[t.n+'.'+i]?' show':''}">${q.hint}</p>`:''}</div>`}).join('')}</div>`;
+ TASKS.appendChild(el);
+});
+// expand/collapse
+TASKS.addEventListener('click',e=>{const h=e.target.closest('.thead');if(h){const t=h.parentNode;const open=t.classList.toggle('open');h.setAttribute('aria-expanded',open);return}
+ const c=e.target.closest('.cpy');if(c){const code=c.parentNode.textContent.replace('نسخ · Copy','');navigator.clipboard?.writeText(code.trim());c.textContent='تم النسخ ✓';setTimeout(()=>c.textContent='نسخ · Copy',1200);return}
+ const hb=e.target.closest('.hintbtn');if(hb){const q=hb.closest('.q');const[,tn,qi]=q.id.match(/q(\d+)_(\d+)/);const k=tn+'.'+qi;
+   q.querySelector('.hinttext').classList.add('show');if(!st.hints[k]){st.hints[k]=1;if(!st.solved[k]){st.pts=Math.max(0,st.pts-5);save();renderHero()}}return}
+});
+// submit
+TASKS.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('.qrow input')){e.preventDefault();e.target.closest('.qrow').querySelector('.sub').click()}});
+TASKS.addEventListener('click',async e=>{const b=e.target.closest('.sub');if(!b||b.disabled)return;
+ const q=b.closest('.q'),[,tn,qi]=q.id.match(/q(\d+)_(\d+)/),input=q.querySelector('input'),fb=q.querySelector('.fb');
+ const t=R.tasks.find(x=>x.n==+tn),qd=t.questions[+qi],val=input.value;
+ if(!val.trim()){fb.className='fb r';fb.textContent='أدخل إجابة أولاً.';return}
+ const ok=(await sha(val))===qd.hash;
+ if(ok){st.solved[tn+'.'+qi]=1;st.pts+=qd.pts;save();q.classList.add('ok');input.disabled=true;input.value='✓ إجابة صحيحة';b.disabled=true;b.textContent='تم ✓';
+  fb.className='fb g';fb.textContent='صحيح! +'+qd.pts+' نقطة';$('#live').textContent='إجابة صحيحة، +'+qd.pts+' نقطة';renderHero();
+  const tEl=$('#task'+tn);if(taskDone(t)&&!tEl.classList.contains('done')){tEl.classList.add('done');$('#live').textContent='اكتملت المهمة '+tn;}
+  checkComplete();
+ }else{q.classList.remove('shake');void q.offsetWidth;if(!still)q.classList.add('shake');fb.className='fb r';fb.textContent='إجابة غير صحيحة — حاول مجدداً.'+(qd.hint?' جرّب التلميح.':'');$('#live').textContent='إجابة غير صحيحة'}
+});
+function checkComplete(){if(doneCount()===R.tasks.length){st.complete=1;save();showCel()}}
+function showCel(){$('#celp').textContent='مجموع نقاطك: '+st.pts+' / '+TOTAL;$('#cel').classList.add('show')}
+$('#celclose').onclick=e=>{e.preventDefault();$('#cel').classList.remove('show')};
+renderHero();
+// open first unsolved task
+(R.tasks.find(t=>!taskDone(t))||R.tasks[0])&&(()=>{const t=R.tasks.find(t=>!taskDone(t))||R.tasks[0];const el=$('#task'+t.n);el.classList.add('open');el.querySelector('.thead').setAttribute('aria-expanded','true')})();
+if(st.complete)setTimeout(showCel,400);
+
+// ================= TERMINAL =================
+const term=$('#term'),tin=$('#tin'),FS=R.fs;
+let cwd=[];// path under /home/student root == FS.tree
+const HOME='/home/'+FS.user;
+function node(parts){let n={d:FS.tree};for(const p of parts){if(!n.d||!(p in n.d))return null;n=n.d[p]}return n}
+function cwdNode(){return node(cwd)}
+function pathStr(){return HOME+(cwd.length?'/'+cwd.join('/'):'')}
+function shortPath(){return '~'+(cwd.length?'/'+cwd.join('/'):'')}
+function setPrompt(){const p=FS.user+'@'+FS.host+':'+shortPath()+'$';$('#tpr').textContent=p;$('#tbt').textContent=FS.user+'@'+FS.host+':'+shortPath()}
+function out(html,cls){const d=ce('div',cls||'',html);term.appendChild(d);term.scrollTop=term.scrollHeight}
+function perm(n){return n.perm||(n.d?'drwxr-xr-x':'-rw-r--r--')}
+function listDir(n){return n&&n.d?Object.keys(n.d):null}
+const PATHHELP={ls:'ls [-a|-l] — عرض محتويات المجلد',cd:'cd <dir> — تغيير المجلد',cat:'cat <file> — طباعة محتوى ملف',pwd:'pwd — طباعة المسار الحالي',grep:'grep <pat> <file> — بحث نصّي',find:'find <path> -name <n> — بحث عن ملف',chmod:'chmod <mode> <file> — تغيير الصلاحيات'};
+function resolve(arg){// returns {parts,node} or null
+ if(arg==null)return{parts:cwd.slice(),node:cwdNode()};
+ let parts;
+ if(arg==='~'||arg==='/home/'+FS.user||arg==='/home/'+FS.user+'/')parts=[];
+ else if(arg.startsWith('/')){if(!arg.startsWith(HOME))return null;arg=arg.slice(HOME.length).replace(/^\//,'');parts=arg?arg.split('/'):[]}
+ else parts=cwd.concat(arg.split('/'));
+ const res=[];for(const p of parts){if(p===''||p==='.')continue;if(p==='..'){res.pop();continue}res.push(p)}
+ const n=node(res);return n?{parts:res,node:n}:null}
+const HIST=[];let hi=0;
+const CMDS={
+ help:()=>out('<span class="mut">الأوامر: pwd ls cd cat echo whoami id mkdir touch rm cp mv find grep head tail wc man chmod uname date history clear help</span>'),
+ pwd:()=>out(pathStr()),
+ whoami:()=>out(FS.user),
+ id:()=>out(`uid=${FS.uid}(${FS.user}) gid=${FS.gid}(${FS.user}) groups=${FS.gid}(${FS.user}),27(sudo)`),
+ uname:a=>out(a[0]==='-a'?'Linux abadx 6.8.0-abadx #1 SMP x86_64 GNU/Linux':a[0]==='-o'?'GNU/Linux':'Linux'),
+ date:()=>out(new Date().toString()),
+ clear:()=>{term.innerHTML=''},
+ echo:a=>out(esc(a.join(' ').replace(/^"|"$/g,''))),
+ history:()=>HIST.forEach((c,i)=>out('  '+(i+1)+'  '+esc(c))),
+ ls:a=>{const all=a.includes('-a'),lng=a.includes('-l');const tgt=a.filter(x=>!x.startsWith('-'))[0];
+  const r=resolve(tgt);if(!r){return out('ls: '+tgt+': لا يوجد ملف أو مجلد','er')}
+  if(!r.node.d){return out((lng?perm(r.node)+' '+FS.user+' '+FS.user+' '+((r.node.c||'').length)+' ':'')+(tgt||''))}
+  let names=listDir(r.node);if(!all)names=names.filter(x=>!x.startsWith('.'));if(all)names=['.','..'].concat(names);
+  names.sort();
+  if(lng){names.forEach(nm=>{if(nm==='.'||nm==='..'){out('drwxr-xr-x '+FS.user+' '+FS.user+'    4096 '+nm);return}const c=r.node.d[nm];out(perm(c)+' '+FS.user+' '+FS.user+' '+String((c.d?4096:(c.c||'').length)).padStart(7)+' '+nm+(c.d?'/':''))})}
+  else out(names.map(nm=>r.node.d&&r.node.d[nm]&&r.node.d[nm].d?nm+'/':nm).join('   ')||'');},
+ cd:a=>{const t=a[0];if(t==null||t==='~'){cwd=[];setPrompt();return}const r=resolve(t);if(!r)return out('cd: '+t+': لا يوجد مثل هذا المجلد','er');if(!r.node.d)return out('cd: '+t+': ليس مجلداً','er');cwd=r.parts;setPrompt()},
+ cat:a=>{if(!a[0])return out('cat: مطلوب اسم ملف','er');for(const f of a){const r=resolve(f);if(!r){out('cat: '+f+': لا يوجد ملف','er');continue}if(r.node.d){out('cat: '+f+': هو مجلد','er');continue}printFile(r.node.c)}},
+ head:a=>{const n=numOpt(a,10);const f=a.filter(x=>!x.startsWith('-')&&isNaN(x))[0]||a.filter(x=>!x.startsWith('-'))[0];rangeFile(f,0,n)},
+ tail:a=>{const n=numOpt(a,10);const f=a.filter(x=>!x.startsWith('-')&&isNaN(x))[0]||a.filter(x=>!x.startsWith('-'))[0];rangeFile(f,-n)},
+ wc:a=>{const f=a.filter(x=>!x.startsWith('-')).pop();const r=resolve(f);if(!r||r.node.d)return out('wc: '+f+': لا يمكن القراءة','er');const c=r.node.c||'';out('  '+c.split('\n').length+'  '+(c.trim()?c.trim().split(/\s+/).length:0)+'  '+c.length+' '+f)},
+ mkdir:a=>{const name=a.filter(x=>!x.startsWith('-'))[0];if(!name)return out('mkdir: مطلوب اسم','er');const n=cwdNode();if(n.d[name])return out('mkdir: '+name+': موجود مسبقاً','er');n.d[name]={d:{}}},
+ touch:a=>{const name=a[0];if(!name)return out('touch: مطلوب اسم','er');const n=cwdNode();if(!n.d[name])n.d[name]={c:''}},
+ rm:a=>{const t=a.filter(x=>!x.startsWith('-'))[0];const rec=a.includes('-r')||a.includes('-rf');const n=cwdNode();if(!t||!n.d[t])return out('rm: '+t+': لا يوجد','er');if(n.d[t].d&&!rec)return out('rm: '+t+': هو مجلد (استخدم -r)','er');delete n.d[t]},
+ cp:a=>{const f=a.filter(x=>!x.startsWith('-'));if(f.length<2)return out('cp: الصيغة: cp <مصدر> <هدف>','er');const s=resolve(f[0]);if(!s||s.node.d)return out('cp: '+f[0]+': لا يمكن النسخ','er');placeInto(f[1],f[0].split('/').pop(),JSON.parse(JSON.stringify(s.node)))},
+ mv:a=>{const f=a.filter(x=>!x.startsWith('-'));if(f.length<2)return out('mv: الصيغة: mv <مصدر> <هدف>','er');const s=resolve(f[0]);if(!s)return out('mv: '+f[0]+': لا يوجد','er');const parent=node(s.parts.slice(0,-1));const nm=s.parts[s.parts.length-1];const copy=parent.d[nm];if(placeInto(f[1],nm,copy))delete parent.d[nm]},
+ find:a=>{let start=a[0]&&!a[0].startsWith('-')?a[0]:'.';const ni=a.indexOf('-name');const pat=ni>=0?a[ni+1]:null;const r=resolve(start==='/'?'~':start);if(!r)return out('find: '+start+': لا يوجد','er');
+  const base=start==='/'||start==='~'?HOME:(start==='.'?pathStr():pathStr()+'/'+start);
+  walk(r.node,start==='/'||start==='~'?HOME:pathStr()+(start==='.'?'':'/'+start),pat)},
+ grep:a=>{const f=a.filter(x=>!x.startsWith('-'));if(f.length<2)return out('grep: الصيغة: grep <نص> <ملف>','er');const pat=f[0].replace(/^"|"$/g,'');const r=resolve(f[1]);if(!r||r.node.d)return out('grep: '+f[1]+': لا يمكن القراءة','er');
+  const ic=a.includes('-i');let hit=false;(r.node.c||'').split('\n').forEach(l=>{if((ic?l.toLowerCase():l).includes(ic?pat.toLowerCase():pat)){hit=true;printLine(l)}});if(!hit)out('')},
+ chmod:a=>{const f=a.filter(x=>!x.startsWith('-'));const mode=f[0],name=f[1];if(!mode||!name)return out('chmod: الصيغة: chmod <mode> <file>','er');const r=resolve(name);if(!r)return out('chmod: '+name+': لا يوجد','er');if(/^[0-7]{3}$/.test(mode)){const map=n=>['---','--x','-w-','-wx','r--','r-x','rw-','rwx'][n];r.node.perm=(r.node.d?'d':'-')+mode.split('').map(n=>map(+n)).join('')}else out('chmod: صيغة غير مدعومة (استخدم رقماً مثل 755)','er')},
+ man:a=>{const c=a[0];out(c&&PATHHELP[c]?PATHHELP[c]:(c?'لا دليل مختصر لـ '+c:'man: مطلوب اسم أمر'),'mut')}
+};
+function numOpt(a,def){for(let i=0;i<a.length;i++){if(a[i]==='-n'&&a[i+1])return+a[i+1];const m=/^-(\d+)$/.exec(a[i]);if(m)return+m[1]}return def}
+function rangeFile(f,start,count){const r=resolve(f);if(!r||r.node.d)return out('لا يمكن قراءة '+f,'er');let L=(r.node.c||'').split('\n');if(start<0)L=L.slice(start);else L=L.slice(start,count);L.forEach(printLine)}
+function printFile(c){(c||'').split('\n').forEach(printLine)}
+function printLine(l){out(/ABADX\{[^}]*\}/.test(l)?esc(l).replace(/(ABADX\{[^}]*\})/,'<span class="fl">$1</span>'):esc(l))}
+function placeInto(dest,name,copy){let r=resolve(dest);if(r&&r.node.d){r.node.d[name]=copy;return true}// dest is dir
+ const parts=dest.split('/');const newName=parts.pop();const pr=resolve(parts.join('/')||'.');if(pr&&pr.node.d){pr.node.d[newName]=copy;return true}out('الهدف غير صالح','er');return false}
+function walk(n,path,pat){if(!n.d){return}for(const k of Object.keys(n.d)){const child=n.d[k];const cp=path+'/'+k;if(!pat||matchName(k,pat))out(cp);if(child.d)walk(child,cp,pat)}}
+function matchName(name,pat){const re=new RegExp('^'+pat.replace(/[.+^${}()|[\]\\]/g,'\\$&').replace(/\*/g,'.*').replace(/\?/g,'.')+'$');return re.test(name)}
+function runCmd(line){const parts=line.trim().split(/\s+/);const cmd=parts[0];const args=parts.slice(1);
+ if(!cmd)return;if(CMDS[cmd])CMDS[cmd](args);else out(esc(cmd)+': command not found — اكتب help','er')}
+function banner(){out('<span class="mut">Abad X terminal — بيئة لينكس محاكاة. اكتب help للأوامر.</span>');setPrompt()}
+banner();
+$('#tform').addEventListener('submit',e=>{e.preventDefault();const v=tin.value;out('<span class="pr">'+esc(shortPath()==='~'?FS.user+'@'+FS.host+':~$':FS.user+'@'+FS.host+':'+shortPath()+'$')+'</span> '+esc(v));if(v.trim()){HIST.push(v);hi=HIST.length}runCmd(v);tin.value='';setPrompt();term.scrollTop=term.scrollHeight});
+tin.addEventListener('keydown',e=>{if(e.key==='ArrowUp'){if(hi>0){hi--;tin.value=HIST[hi]||'';setTimeout(()=>tin.setSelectionRange(99,99))}e.preventDefault()}
+ else if(e.key==='ArrowDown'){if(hi<HIST.length){hi++;tin.value=HIST[hi]||''}e.preventDefault()}});
+// mobile drawer
+const tgl=$('#tgl'),tp=$('#tp');if(innerWidth<=980)tp.classList.add('drawer');
+addEventListener('resize',()=>{if(innerWidth<=980)tp.classList.add('drawer');else{tp.classList.remove('drawer','open')}});
+tgl.onclick=()=>{const o=tp.classList.toggle('open');tgl.setAttribute('aria-expanded',o);if(o)tin.focus()};
+})();
+</script></body></html>
