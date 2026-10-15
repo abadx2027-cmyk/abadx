@@ -38,6 +38,7 @@ body{min-height:100vh;display:grid;place-items:center;overflow:hidden;background
 </form></main>
 <script>
 const f=document.getElementById('f'),u=document.getElementById('user'),p=document.getElementById('pw'),eye=document.getElementById('eye'),al=document.getElementById('alert'),go=document.getElementById('go');
+const sv=localStorage.getItem('abadx-user');if(sv){u.value=sv;document.getElementById('rem').checked=true}
 const setErr=(el,id,m)=>{el.setAttribute('aria-invalid',!!m);document.getElementById(id).textContent=m||''};
 eye.onclick=()=>{const s=p.type==='password';p.type=s?'text':'password';eye.textContent=s?'إخفاء':'إظهار';eye.setAttribute('aria-pressed',s);p.focus()};
 u.oninput=()=>setErr(u,'ue');p.oninput=()=>setErr(p,'pe');
