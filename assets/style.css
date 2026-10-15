@@ -55,3 +55,13 @@ h1,h2,h3{line-height:1.4}
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;counter-reset:s}.step{position:relative}.step:before{counter-increment:s;content:counter(s);position:absolute;top:18px;left:18px;font-size:2.6rem;font-weight:800;color:#13264a}
 .ctf{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;padding:30px;border-radius:22px;border:1px solid #1d3a66;background:linear-gradient(120deg,#03081a,#071b3a 60%,#03081a);box-shadow:inset 0 0 60px rgba(56,189,248,.12)}
 .soon{background:#0f1d38;color:var(--neon);border-radius:99px;padding:2px 12px;font-size:.85rem;font-weight:700}
+/* wordmark → card connectors */
+main.wired{position:relative}main.wired>section,main.wired .card,main.wired h2{position:relative;z-index:2}
+.lhero{z-index:auto!important}.lhero>*{z-index:2}
+.wires{position:absolute;top:0;left:0;z-index:1;pointer-events:none;overflow:visible}
+.wb{fill:none;stroke:rgba(56,189,248,.35);stroke-width:1.5}
+.wp{fill:none;stroke:#7dd3fc;stroke-width:3;stroke-linecap:round;stroke-dasharray:60 940;stroke-dashoffset:1000;animation:pulse 3.2s linear infinite}
+@keyframes pulse{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.wp{animation:none;stroke-dasharray:none;stroke:rgba(56,189,248,.55);stroke-width:2}}
+main.wired .lhero>.stats{z-index:0}main.wired .stat{background:rgba(13,19,34,.55)}
+.wb{stroke:rgba(56,189,248,.5)}
