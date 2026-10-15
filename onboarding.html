@@ -40,10 +40,12 @@ main{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr 1fr;g
 .stage{transition:opacity .35s,transform .35s}.stage.out{opacity:0;transform:translateX(30px)}
 /* terminal */
 .laptop{position:sticky;top:24px}
+#scr .term{box-shadow:0 0 26px rgba(56,189,248,.2),inset 0 0 20px rgba(37,99,235,.1)}
 .screen{position:relative;background:#02070f;border:1px solid rgba(56,189,248,calc(.25 + var(--p)*.5));border-radius:14px 14px 4px 4px;overflow:hidden;box-shadow:0 0 calc(20px + var(--p)*60px) rgba(56,189,248,calc(.12 + var(--p)*.35)),inset 0 0 40px rgba(37,99,235,.12);transition:box-shadow .6s,border-color .6s}
 .tbar{display:flex;gap:6px;align-items:center;padding:10px 14px;border-bottom:1px solid rgba(56,189,248,.15);direction:ltr;font-family:var(--mono);font-size:.75rem;color:var(--mut)}
 .tbar i{width:10px;height:10px;border-radius:50%;background:#1e3a5f}.tbar i:first-child{background:var(--b)}.tbar span{margin-left:auto}
-.term{direction:ltr;text-align:left;font-family:var(--mono);font-size:.88rem;color:#cfe6ff;padding:18px;height:340px;overflow:auto;line-height:1.75;white-space:pre-wrap}
+.code{position:absolute;inset:38px 0 0;overflow:hidden;direction:ltr;text-align:left;font-family:var(--mono);font-size:.74rem;line-height:1.55;padding:10px 16px;color:#3b6a9a;white-space:pre;opacity:.9;mask-image:linear-gradient(transparent,#000 10%,#000 72%,rgba(0,0,0,.3))}.code div{height:1.55em;overflow:hidden;text-overflow:clip}.c0{color:#6ea9d8}.c1{color:#38bdf8}.c2{color:#7dd3fc}.c3{color:#2563eb}.c4{color:#5b7396}.c5{color:#a5f3fc}.c6{color:#4ade80}
+.term{position:relative;z-index:1;margin:252px 12px 12px;background:rgba(2,8,18,.84);border:1px solid rgba(56,189,248,.4);border-radius:10px;backdrop-filter:blur(2px);box-shadow:0 0 26px rgba(56,189,248,.2),inset 0 0 20px rgba(37,99,235,.1);direction:ltr;text-align:left;font-family:var(--mono);font-size:.86rem;color:#eaf4ff;padding:12px 14px;height:188px;overflow:auto;line-height:1.75;white-space:pre-wrap}
 .term .k{color:var(--b)}.term .ok{color:#4ade80}.term .d{color:#5b7396}
 .screen:after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px)}
 .screen.gl{animation:tg .25s steps(2)}@keyframes tg{50%{transform:translateX(2px) skewX(-1deg);filter:hue-rotate(20deg)}}
@@ -59,7 +61,7 @@ main{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr 1fr;g
 .cta{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:12px;font-weight:700;border:1px solid var(--b)}
 .cta.p{background:linear-gradient(90deg,var(--b2),var(--b));color:#fff;box-shadow:0 0 24px rgba(56,189,248,.4)}.cta.s{color:#cfe6ff}
 #q:focus{outline:none}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-@media (max-width:900px){main{grid-template-columns:1fr}.laptop{position:static}.term{height:170px;font-size:.8rem}.agent{width:60px;height:60px}}
+@media (max-width:900px){main{grid-template-columns:1fr}.laptop{position:static}.term{height:140px;font-size:.78rem;margin-top:132px}.code{font-size:.64rem}.agent{width:60px;height:60px}}
 @media (max-width:520px){.opts{grid-template-columns:1fr}.card{padding:12px 14px}.ic{width:40px;height:40px}header img{height:30px}}
 .still *,.still *:before,.still *:after{animation:none!important;transition:none!important}.still .card,.still .rec{opacity:1;transform:none}
 </style></head><body>
@@ -78,7 +80,7 @@ main{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr 1fr;g
 <div class="sr" aria-live="polite" id="live"></div>
 <div class="stage" id="stage"></div>
 </section>
-<aside class="laptop" aria-label="طرفية Abad X terminal"><div class="screen" id="scr"><div class="tbar"><i></i><i></i><i></i><span>abadx@onboard:~</span></div><div class="term" id="term" aria-hidden="true"></div></div><div class="base"></div></aside>
+<aside class="laptop" aria-label="طرفية Abad X terminal"><div class="screen" id="scr"><div class="tbar"><i></i><i></i><i></i><span>abadx@onboard:~</span></div><div class="code" id="code" aria-hidden="true"></div><div class="term" id="term" aria-hidden="true"></div></div><div class="base"></div></aside>
 </main>
 <script src="assets/academy-data.js?v=6"></script>
 <script>
@@ -133,6 +135,50 @@ $('stage').classList.remove('out');$('stage').innerHTML=`<div class="rec" id="re
 $('live').textContent=`التوصية: ${sp.ar} ${sp.en}، ${pickc.length} شهادات`;$('skip').hidden=true;$('q').focus({preventScroll:true})}
 $('skip').onclick=()=>localStorage.setItem('abadx_onboarding_done','1');
 tline('<span class="d">abad-x onboarding v1.0 — init</span>','abad-x onboarding v1.0 — init');render(false);$('q').focus({preventScroll:true});
+// background code stream (endless hacker-style)
+(()=>{const box=$('code');if(!box)return;
+const P=[
+['c4','# abadx :: recon pipeline'],
+['c1','$ nmap -sV -sC -T4 10.10.{a}.{b}'],
+['c2','PORT     STATE SERVICE    VERSION'],
+['c5','22/tcp   open  ssh        OpenSSH 9.6p1'],
+['c5','80/tcp   open  http       nginx 1.27.{b}'],
+['c5','443/tcp  open  ssl/http   nginx 1.27.{b}'],
+['c4','# enumerating web root ...'],
+['c1','$ gobuster dir -u http://10.10.{a}.{b} -w rockyou.txt'],
+['c2','/admin        (Status: 301) [--> /admin/]'],
+['c2','/api          (Status: 200) [size: {b}4{a}]'],
+['c3','[+] found {b} endpoints'],
+['c1','$ python3 exploit.py --target 10.10.{a}.{b} --port {b}22'],
+['c0','def crack(hash, wordlist):'],
+['c0','    for w in wordlist:'],
+['c0','        if sha256(w) == hash:'],
+['c6','            return w  # match'],
+['c3','[*] loading module payloads.reverse_tcp'],
+['c3','[*] establishing channel 0x{h} ...'],
+['c6','[+] shell acquired :: uid=0(root)'],
+['c1','$ cat /etc/abadx/flag.txt'],
+['c5','ABADX{{learn_. _by_. _doing_{h}}}'],
+['c4','# packet capture ::'],
+['c0','tcp 10.10.{a}.{b}:{b}22 > 10.10.0.1:443  SYN'],
+['c0','tcp 10.10.0.1:443 > 10.10.{a}.{b}:{b}22  ACK'],
+['c3','[~] decrypting TLS stream ... {b}%'],
+['c1','$ ssh root@10.10.{a}.{b} "uname -a && whoami"'],
+['c5','Linux abadx 6.8.0-abadx #1 SMP x86_64 GNU/Linux'],
+['c6','root'],
+['c4','# training sandbox ready'],
+];
+const hx='0123456789abcdef',rnd=n=>Math.floor(Math.random()*n),E=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+function fmt(t){return t.replace(/{a}/g,()=>rnd(255)).replace(/{b}/g,()=>rnd(99)).replace(/{h}/g,()=>Array.from({length:4},()=>hx[rnd(16)]).join(''))}
+const CAP=46;let idx=0;
+function add(){const row=P[idx%P.length];idx++;const d=document.createElement('div');d.className=row[0];d.textContent=fmt(row[1]);box.appendChild(d);while(box.children.length>CAP)box.firstChild.remove()}
+for(let i=0;i<CAP;i++)add();
+let timer=null;function tick(){add()}
+function run(){if(timer||still||document.hidden)return;timer=setInterval(tick,420)}
+function stop(){clearInterval(timer);timer=null}
+document.addEventListener('visibilitychange',()=>document.hidden?stop():run());
+run();
+})();
 // particles
 const cv=$('fx'),cx=cv.getContext('2d');let W,H,P=[];function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight;P=Array.from({length:Math.min(90,W/14)},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+.3,v:Math.random()*.25+.05,a:Math.random()}))}
 rs();addEventListener('resize',rs);function draw(){cx.clearRect(0,0,W,H);P.forEach(p=>{if(!still){p.y-=p.v;if(p.y<0)p.y=H}cx.fillStyle=`rgba(125,211,252,${.25+p.a*.5})`;cx.beginPath();cx.arc(p.x,p.y,p.r,0,7);cx.fill()});still||requestAnimationFrame(draw)}draw();
