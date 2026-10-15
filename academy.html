@@ -6,6 +6,6 @@
 <main id="main"><header class="head"><div class="wm" aria-hidden="true">Abad <b>X</b></div><h1>الأكاديمية <span class="en">Academy</span></h1><p>اختر التخصص لاستعراض الجهات المانحة للشهادات ومساراتها.</p></header>
 <ul class="grid" id="list" aria-label="التخصصات"></ul></main>
 <footer>© 2026 Abad X</footer>
-<script src="assets/academy-data.js"></script><script>
+<script src="assets/academy-data.js?v=2"></script><script>
 document.getElementById('list').innerHTML=SPECIALTIES.map(s=>`<li><a class="sc" href="specialty.html?s=${s.id}">${emblem(s.icon)}<h2>${s.ar} <span class="en">${s.en}</span></h2><p>${s.dar}<span class="en">${s.den}</span></p><div class="meta"><span>${s.vendors.length} جهات · vendors</span><span class="go" aria-hidden="true">ENTER &gt;</span></div></a></li>`).join('');
 </script></body></html>

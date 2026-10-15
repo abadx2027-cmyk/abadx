@@ -5,7 +5,7 @@
 <nav class="topbar" aria-label="مسار التنقل"><div class="crumb"><a href="portal.html">البوابة</a> / <a href="academy.html">الأكاديمية</a> / <a id="sp" href="academy.html"></a> / <span aria-current="page" id="cr"></span></div><a class="back" id="bk" href="academy.html">→ رجوع · Back</a></nav>
 <main id="main"><header class="head" id="hd"></header><ul class="grid" id="list" aria-label="الشهادات"></ul></main>
 <footer>جميع العلامات التجارية والشعارات مملوكة لأصحابها · All trademarks and logos belong to their respective owners<br>© 2026 Abad X</footer>
-<script src="assets/academy-data.js"></script><script>
+<script src="assets/academy-data.js?v=2"></script><script>
 const q=new URLSearchParams(location.search),s=SPECIALTIES.find(x=>x.id===q.get('s')),vd=s&&s.vendors.find(x=>x.id===q.get('v')),L=document.getElementById('list'),H=document.getElementById('hd');
 if(!vd){document.getElementById('sp').remove();document.getElementById('cr').textContent='غير موجود';H.innerHTML='<div class="wm" aria-hidden="true">Abad <b>X</b></div><h1>الجهة غير موجودة <span class="en">Vendor not found</span></h1>';L.outerHTML='<div class="empty">لم يتم العثور على هذه الجهة. <a href="academy.html">العودة إلى الأكاديمية</a></div>'}
 else{document.title='Abad X | '+vd.name;const sp=document.getElementById('sp');sp.textContent=s.ar;sp.href='specialty.html?s='+s.id;document.getElementById('bk').href=sp.href;document.getElementById('cr').textContent=vd.name;
