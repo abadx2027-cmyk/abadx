@@ -1,54 +1,101 @@
 <!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>تسجيل الدخول | Abad X</title><link rel="icon" href="assets/abad-logo.png"><link rel="stylesheet" href="assets/style.css">
+<title>Abad X | دخول آمن</title><link rel="icon" href="assets/abad-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 <style>
-body{min-height:100vh;display:grid;place-items:center;overflow:hidden;background:#020306}
-.bg{position:fixed;inset:0;z-index:0;pointer-events:none}
-.bg .grid2{position:absolute;inset:-40px;background-image:linear-gradient(rgba(56,189,248,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.07) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(circle at 50% 45%,#000 0,transparent 65%);animation:pan 18s linear infinite}
-.bg .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;animation:float 12s ease-in-out infinite alternate}
-.o1{width:480px;height:480px;background:#1d4ed8;top:-120px;right:-80px}.o2{width:420px;height:420px;background:#0891b2;bottom:-140px;left:-100px;animation-delay:-6s}
-@keyframes pan{to{transform:translateY(44px)}}@keyframes float{to{transform:translate(40px,30px) scale(1.1)}}
-.wrap{position:relative;z-index:1;width:min(420px,92vw);padding:24px 0}
-.brandc{text-align:center;margin-bottom:22px}.brandc img{height:64px;background:#fff;border-radius:14px;padding:6px 10px;box-shadow:0 0 36px rgba(56,189,248,.35)}
-.brandc h1{margin:10px 0 0;font-size:2.6rem}.brandc h1 b{color:var(--neon);text-shadow:0 0 26px rgba(56,189,248,.7)}.brandc p{margin:0;color:#a3b2d1}
-.glass{background:rgba(10,16,30,.55);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(56,189,248,.22);border-radius:22px;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.6),inset 0 0 40px rgba(47,140,255,.08)}
-.glass h2{margin:0 0 18px;font-size:1.3rem}
-.f{margin-bottom:16px}.f label{display:block;font-weight:700;margin-bottom:6px}
-.inp{position:relative}.inp input{width:100%;font:inherit;color:var(--txt);background:rgba(2,4,10,.7);border:1px solid #22314f;border-radius:12px;padding:11px 14px;transition:border-color .2s,box-shadow .2s}
-.inp input:focus{outline:none;border-color:var(--neon);box-shadow:0 0 0 3px rgba(56,189,248,.25)}
-.inp input[aria-invalid=true]{border-color:#f87171;box-shadow:0 0 0 3px rgba(248,113,113,.18)}
-#pw{padding-left:84px}.eye{position:absolute;left:6px;top:50%;transform:translateY(-50%);background:#0f1d38;color:var(--neon);border:0;border-radius:8px;padding:5px 10px;font:inherit;font-size:.85rem;cursor:pointer}
-.err{color:#fca5a5;font-size:.88rem;min-height:1.3em;margin-top:4px}
-.row{display:flex;justify-content:space-between;align-items:center;margin:4px 0 18px;font-size:.92rem;gap:8px;flex-wrap:wrap}
-.glass .btn{width:100%;padding:12px;font-size:1.05rem}.btn[aria-busy=true]{opacity:.75;cursor:wait}
-.note{margin-top:14px;text-align:center;font-size:.82rem;color:#7f8fb0}
-.alert{display:none;background:rgba(248,113,113,.1);border:1px solid #7f1d1d;color:#fecaca;border-radius:10px;padding:8px 12px;margin-bottom:14px}.alert.ok{background:rgba(56,189,248,.1);border-color:#1d4ed8;color:#bae6fd}
-@media (prefers-reduced-motion:reduce){.bg *{animation:none!important}}
+:root{--mono:'JetBrains Mono','Fira Code',ui-monospace,'DejaVu Sans Mono',monospace;--b:#38bdf8;--b2:#1d6fff}
+html,body{height:100%}body{margin:0;background:#000;color:#cfe8ff;display:grid;place-items:center;overflow-x:hidden}
+#rain{position:fixed;inset:0;z-index:0;opacity:.45}
+.crt{position:fixed;inset:0;z-index:2;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.28) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.85))}
+.wrap{position:relative;z-index:3;width:min(560px,94vw);padding:28px 0}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;direction:ltr}
+.top img{height:34px;background:#fff;border-radius:8px;padding:3px 6px;opacity:.92}
+.glitch{position:relative;font-family:var(--mono);font-weight:700;font-size:clamp(2rem,6vw,2.8rem);color:#e6f4ff;letter-spacing:2px;margin:0}
+.glitch b{color:var(--b);text-shadow:0 0 18px rgba(56,189,248,.8)}
+.glitch:before,.glitch:after{content:attr(data-t);position:absolute;inset:0;overflow:hidden}
+.glitch:before{color:#60a5fa;transform:translate(2px,0);clip-path:inset(0 0 60% 0);animation:g1 3.2s infinite steps(1)}
+.glitch:after{color:#1e40af;transform:translate(-2px,0);clip-path:inset(55% 0 0 0);animation:g2 2.7s infinite steps(1)}
+@keyframes g1{0%,92%{transform:none;opacity:0}93%{transform:translate(3px,-1px);opacity:1}96%{transform:translate(-3px,1px)}}
+@keyframes g2{0%,88%{transform:none;opacity:0}89%{transform:translate(-4px,1px);opacity:1}94%{transform:translate(2px,0)}}
+.eye{width:44px;height:44px;color:var(--b);filter:drop-shadow(0 0 8px rgba(56,189,248,.7))}
+.term{background:rgba(2,6,14,.86);border:1px solid #12305a;border-radius:12px;box-shadow:0 0 0 1px rgba(56,189,248,.06),0 0 50px rgba(29,111,255,.18);overflow:hidden}
+.bar{display:flex;align-items:center;gap:7px;padding:9px 12px;background:#050c1a;border-bottom:1px solid #12305a;direction:ltr;font-family:var(--mono);font-size:.78rem;color:#6b8bb8}
+.bar i{width:11px;height:11px;border-radius:50%;background:#16325c}.bar i:first-child{background:#1d6fff}.bar span{margin-left:auto}
+.body{padding:18px 20px 22px;font-family:var(--mono);font-size:.95rem;line-height:1.75}
+#boot{direction:ltr;text-align:left;margin:0 0 10px;min-height:9.2em;color:#8fb8e8;white-space:pre-wrap}
+#boot .w{color:#93c5fd}#boot .r{color:#7dd3fc;font-weight:700}
+.ar{font-family:Cairo,sans-serif;direction:rtl;text-align:right;color:#a9c3e6;font-size:.92rem;margin:0 0 12px}
+form{direction:ltr;text-align:left}
+.ln{display:flex;align-items:center;gap:10px;border-bottom:1px dashed #163056;padding:6px 0}
+.ln label{color:var(--b);white-space:nowrap;min-width:92px}.ln label small{display:block;font-family:Cairo,sans-serif;color:#6f8fbd;font-size:.72rem;line-height:1.1}
+.ln input{flex:1;min-width:0;background:transparent;border:0;color:#e6f4ff;font:inherit;caret-color:var(--b);padding:6px 2px;outline:none}
+.ln:focus-within{border-bottom-color:var(--b);box-shadow:0 1px 0 0 var(--b)}
+.ln[data-bad=true]{border-bottom-color:#ef4444}
+.tog{background:#081a33;border:1px solid #1b3c6c;color:var(--b);font:inherit;font-size:.75rem;border-radius:6px;padding:3px 8px;cursor:pointer}
+.err{font-family:Cairo,sans-serif;direction:rtl;text-align:right;color:#fca5a5;font-size:.82rem;min-height:1.2em}
+.opts{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin:12px 0 16px;font-size:.85rem}
+.ck{display:flex;align-items:center;gap:8px;cursor:pointer;color:#a9c3e6}
+.ck input{appearance:none;-webkit-appearance:none;width:18px;height:18px;margin:0;border:1px solid #2a4f86;border-radius:4px;background:#030914;display:grid;place-items:center;cursor:pointer}
+.ck input:checked{background:#0b2a55;border-color:var(--b);box-shadow:0 0 8px rgba(56,189,248,.5)}.ck input:checked:after{content:"✓";color:var(--b);font-size:13px;line-height:1}
+.go{width:100%;font-family:var(--mono);font-weight:700;letter-spacing:2px;background:transparent;color:var(--b);border:1px solid var(--b);border-radius:8px;padding:11px;cursor:pointer;transition:background .2s,box-shadow .2s,color .2s}
+.go:hover,.go:focus-visible{background:var(--b);color:#00121f;box-shadow:0 0 22px rgba(56,189,248,.6)}
+.cur{display:inline-block;width:.6em;height:1.1em;background:var(--b);vertical-align:-2px;animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}
+#status{position:fixed;inset:0;z-index:5;display:none;place-items:center;background:rgba(0,0,0,.6);pointer-events:none}
+#status.on{display:grid}#status.static div{animation:none!important}#status div{font-family:var(--mono);font-weight:700;font-size:clamp(1.6rem,7vw,3.4rem);letter-spacing:6px;padding:14px 26px;border:2px solid;border-radius:8px;background:rgba(2,4,10,.92);animation:pop .5s ease-out}
+#status .ok{color:var(--b);border-color:var(--b);text-shadow:0 0 22px var(--b);box-shadow:0 0 40px rgba(56,189,248,.4)}
+#status .no{color:#f87171;border-color:#f87171;text-shadow:0 0 22px #ef4444;animation:pop .4s,shake .4s .4s}
+@keyframes pop{from{transform:scale(1.25)}}@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.note{font-family:Cairo,sans-serif;text-align:center;color:#5f7aa6;font-size:.78rem;margin-top:12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.glitch:before,.glitch:after{display:none}}
 </style></head><body>
-<div class="bg" aria-hidden="true"><div class="orb o1"></div><div class="orb o2"></div><div class="grid2"></div></div>
-<main class="wrap" id="main">
-<div class="brandc"><img src="assets/abad-logo.png" alt="شعار معهد شبكة آباد للتدريب"><h1>Abad <b>X</b></h1><p>معامل تطبيقية ذاتية التعلّم</p></div>
-<form class="glass" id="f" novalidate aria-labelledby="lt">
-<h2 id="lt">تسجيل الدخول</h2>
-<div class="alert" id="alert" role="alert"></div>
-<div class="f"><label for="user">اسم المستخدم أو البريد الإلكتروني</label><div class="inp"><input id="user" name="user" autocomplete="username" dir="auto" aria-describedby="ue"></div><div class="err" id="ue" aria-live="polite"></div></div>
-<div class="f"><label for="pw">كلمة المرور</label><div class="inp"><input id="pw" name="pw" type="password" autocomplete="current-password" dir="auto" aria-describedby="pe"><button type="button" class="eye" id="eye" aria-pressed="false" aria-controls="pw">إظهار</button></div><div class="err" id="pe" aria-live="polite"></div></div>
-<div class="row"><label class="chk" style="margin:0;font-weight:400"><input type="checkbox" id="rem"> تذكّرني</label><a href="#" id="forgot">نسيت كلمة المرور؟</a></div>
-<button class="btn" type="submit" id="go">دخول</button>
-<p class="note">نسخة تجريبية — تسجيل الدخول للعرض فقط ولا يتم التحقق من الحساب.</p>
-</form></main>
+<canvas id="rain" aria-hidden="true"></canvas><div class="crt" aria-hidden="true"></div>
+<main class="wrap">
+<div class="top"><h1 class="glitch" data-t="Abad X">Abad <b>X</b></h1>
+<svg class="eye" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 40c0-12 6-26 14-30 8 4 14 18 14 30"/><path d="M4 44c2-16 9-30 20-36 11 6 18 20 20 36"/><path d="M17 27c2-3 4.5-4 7-4s5 1 7 4c-2 3-4.5 4-7 4s-5-1-7-4z"/><circle cx="24" cy="27" r="1.8" fill="currentColor"/></svg>
+<img src="assets/abad-logo.png" alt="معهد شبكة آباد للتدريب"></div>
+<section class="term" aria-labelledby="tt">
+<div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>abadx@secure-shell: ~</span></div>
+<div class="body">
+<h2 id="tt" class="sr">تسجيل الدخول إلى Abad X</h2>
+<pre id="boot" aria-hidden="true"></pre>
+<p class="ar">🔒 منطقة مقيّدة — سجّل الدخول للوصول إلى المعامل التطبيقية.</p>
+<form id="f" novalidate>
+<div class="ln" id="l1"><label for="user">login:<small>المستخدم / البريد</small></label><input id="user" autocomplete="username" spellcheck="false" aria-describedby="ue"><span class="cur" id="c1" aria-hidden="true"></span></div><div class="err" id="ue" aria-live="polite"></div>
+<div class="ln" id="l2"><label for="pw">password:<small>كلمة المرور</small></label><input id="pw" type="password" autocomplete="current-password" aria-describedby="pe"><button type="button" class="tog" id="tog" aria-pressed="false" aria-controls="pw">show</button></div><div class="err" id="pe" aria-live="polite"></div>
+<div class="opts"><label class="ck"><input type="checkbox" id="rem"><span style="font-family:Cairo">تذكّرني</span></label><a href="#" id="forgot" style="font-family:Cairo">نسيت كلمة المرور؟</a></div>
+<button class="go" type="submit">&gt; AUTHENTICATE_</button>
+<p class="err" id="msg" role="alert" style="text-align:center;margin-top:10px"></p>
+</form></div></section>
+<p class="note">نسخة تجريبية — الدخول للعرض فقط دون تحقق فعلي من الحساب · معهد شبكة آباد للتدريب</p>
+</main>
+<div id="status" aria-hidden="true"></div>
 <script>
-const f=document.getElementById('f'),u=document.getElementById('user'),p=document.getElementById('pw'),eye=document.getElementById('eye'),al=document.getElementById('alert'),go=document.getElementById('go');
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+// code rain
+(()=>{const c=document.getElementById('rain'),x=c.getContext('2d');let w,h,cols,d;const ch='0123456789ABCDEF<>/{}#$';const fs=15;
+const rs=()=>{w=c.width=innerWidth;h=c.height=innerHeight;cols=Math.ceil(w/fs);d=Array.from({length:cols},()=>Math.random()*-h/fs)};rs();addEventListener('resize',rs);
+const draw=()=>{x.fillStyle='rgba(0,0,0,.09)';x.fillRect(0,0,w,h);x.font=fs+'px monospace';d.forEach((y,i)=>{x.fillStyle=Math.random()<.04?'#bfe6ff':'#1d6fff';x.fillText(ch[Math.random()*ch.length|0],i*fs,y*fs);d[i]=y*fs>h&&Math.random()>.975?0:y+1})};
+if(RM){for(let k=0;k<60;k++)draw()}else{let t=0;const loop=n=>{if(n-t>55){draw();t=n}requestAnimationFrame(loop)};requestAnimationFrame(loop)}})();
+// boot
+const lines=[['> initializing Abad X secure shell...',''],['> loading lab modules [net|linux|sec|cloud] ... ok',''],['> handshake: TLS 1.3 / node riyadh-01 ... ok',''],['> WARNING: access restricted','w'],['> authentication required_','r']];
+const boot=document.getElementById('boot');
+(async()=>{for(const[t,k] of lines){const s=document.createElement('span');s.className=k;boot.append(s);if(RM){s.textContent=t}else{for(const ch of t){s.textContent+=ch;await new Promise(r=>setTimeout(r,14))}}boot.append('\n')}})();
+// form
+const f=document.getElementById('f'),u=document.getElementById('user'),p=document.getElementById('pw'),tog=document.getElementById('tog'),msg=document.getElementById('msg'),st=document.getElementById('status');
 const sv=localStorage.getItem('abadx-user');if(sv){u.value=sv;document.getElementById('rem').checked=true}
-const setErr=(el,id,m)=>{el.setAttribute('aria-invalid',!!m);document.getElementById(id).textContent=m||''};
-eye.onclick=()=>{const s=p.type==='password';p.type=s?'text':'password';eye.textContent=s?'إخفاء':'إظهار';eye.setAttribute('aria-pressed',s);p.focus()};
-u.oninput=()=>setErr(u,'ue');p.oninput=()=>setErr(p,'pe');
-document.getElementById('forgot').onclick=e=>{e.preventDefault();al.className='alert ok';al.style.display='block';al.textContent='استعادة كلمة المرور غير متاحة في النسخة التجريبية. تواصل مع إدارة المعهد.'};
-f.onsubmit=e=>{e.preventDefault();al.style.display='none';let first=null;
-if(!u.value.trim()){setErr(u,'ue','الرجاء إدخال اسم المستخدم أو البريد الإلكتروني.');first=u}
-else if(u.value.includes('@')&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(u.value.trim())){setErr(u,'ue','صيغة البريد الإلكتروني غير صحيحة.');first=u}
-if(!p.value){setErr(p,'pe','الرجاء إدخال كلمة المرور.');first=first||p}
-if(first){first.focus();al.className='alert';al.style.display='block';al.textContent='يرجى تصحيح الحقول المظللة.';return}
-go.setAttribute('aria-busy','true');go.textContent='جارٍ الدخول…';
-sessionStorage.setItem('abadx-user',u.value.trim());if(document.getElementById('rem').checked)localStorage.setItem('abadx-user',u.value.trim());
-setTimeout(()=>location.href='home.html',500)};
+u.onfocus=()=>document.getElementById('c1').style.display='none';u.onblur=()=>{if(!u.value)document.getElementById('c1').style.display=''};
+const bad=(i,l,e,m)=>{document.getElementById(l).dataset.bad=!!m;i.setAttribute('aria-invalid',!!m);document.getElementById(e).textContent=m||''};
+u.oninput=()=>bad(u,'l1','ue');p.oninput=()=>bad(p,'l2','pe');
+tog.onclick=()=>{const s=p.type==='password';p.type=s?'text':'password';tog.textContent=s?'hide':'show';tog.setAttribute('aria-pressed',s);p.focus()};
+document.getElementById('forgot').onclick=e=>{e.preventDefault();msg.style.color='#93c5fd';msg.textContent='استعادة كلمة المرور غير متاحة في النسخة التجريبية — تواصل مع إدارة المعهد.'};
+const show=(ok)=>{st.innerHTML=`<div class="${ok?'ok':'no'}">${ok?'ACCESS GRANTED':'ACCESS DENIED'}</div>`;st.classList.add("on");if(location.hash==="#demo-denied")st.classList.add("static");if(!ok&&location.hash!=="#demo-denied")setTimeout(()=>st.classList.remove("on"),1600)};
+f.onsubmit=e=>{e.preventDefault();msg.style.color='';let first=null;const uv=u.value.trim();
+if(!uv){bad(u,'l1','ue','الرجاء إدخال اسم المستخدم أو البريد الإلكتروني.');first=u}else if(uv.includes('@')&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(uv)){bad(u,'l1','ue','صيغة البريد الإلكتروني غير صحيحة.');first=u}
+if(!p.value){bad(p,'l2','pe','الرجاء إدخال كلمة المرور.');first=first||p}
+if(first){msg.textContent='تم رفض الوصول: يرجى تصحيح الحقول المحددة.';show(false);first.focus();return}
+msg.style.color='#7dd3fc';msg.textContent='تم منح الوصول… جارٍ التحويل';show(true);
+sessionStorage.setItem('abadx-user',uv);document.getElementById('rem').checked?localStorage.setItem('abadx-user',uv):localStorage.removeItem('abadx-user');
+setTimeout(()=>location.href='home.html',RM?300:1300)};
+if(location.hash==='#demo-denied')setTimeout(()=>f.requestSubmit(),1500);
 </script></body></html>
