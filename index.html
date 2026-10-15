@@ -1,5 +1,5 @@
 <!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Abad X | دخول آمن</title><link rel="icon" href="assets/abad-logo.png">
+<title>Abad X | دخول آمن</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="assets/favicon-32.png" sizes="32x32"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 <style>
@@ -9,7 +9,7 @@ html,body{height:100%}body{margin:0;background:#000;color:#cfe8ff;display:grid;p
 .crt{position:fixed;inset:0;z-index:2;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.28) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.85))}
 .wrap{position:relative;z-index:3;width:min(560px,94vw);padding:28px 0}
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;direction:ltr}
-.top img{height:34px;background:#fff;border-radius:8px;padding:3px 6px;opacity:.92}
+.top img{height:42px;filter:drop-shadow(0 0 10px rgba(56,189,248,.5))}
 .glitch{position:relative;font-family:var(--mono);font-weight:700;font-size:clamp(2rem,6vw,2.8rem);color:#e6f4ff;letter-spacing:2px;margin:0}
 .glitch b{color:var(--b);text-shadow:0 0 18px rgba(56,189,248,.8)}
 .glitch:before,.glitch:after{content:attr(data-t);position:absolute;inset:0;overflow:hidden}
@@ -53,7 +53,7 @@ form{direction:ltr;text-align:left}
 <main class="wrap">
 <div class="top"><h1 class="glitch" data-t="Abad X">Abad <b>X</b></h1>
 <svg class="eye" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 40c0-12 6-26 14-30 8 4 14 18 14 30"/><path d="M4 44c2-16 9-30 20-36 11 6 18 20 20 36"/><path d="M17 27c2-3 4.5-4 7-4s5 1 7 4c-2 3-4.5 4-7 4s-5-1-7-4z"/><circle cx="24" cy="27" r="1.8" fill="currentColor"/></svg>
-<img src="assets/abad-logo.png" alt="معهد شبكة آباد للتدريب"></div>
+<img src="assets/abadx-logo.svg" alt="شعار Abad X"></div>
 <section class="term" aria-labelledby="tt">
 <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>abadx@secure-shell: ~</span></div>
 <div class="body">
@@ -67,7 +67,7 @@ form{direction:ltr;text-align:left}
 <button class="go" type="submit">&gt; AUTHENTICATE_</button>
 <p class="err" id="msg" role="alert" style="text-align:center;margin-top:10px"></p>
 </form></div></section>
-<p class="note">نسخة تجريبية — الدخول للعرض فقط دون تحقق فعلي من الحساب · معهد شبكة آباد للتدريب</p>
+<p class="note">نسخة تجريبية — الدخول للعرض فقط دون تحقق فعلي من الحساب</p>
 </main>
 <div id="status" aria-hidden="true"></div>
 <script>
@@ -88,7 +88,7 @@ u.onfocus=()=>document.getElementById('c1').style.display='none';u.onblur=()=>{i
 const bad=(i,l,e,m)=>{document.getElementById(l).dataset.bad=!!m;i.setAttribute('aria-invalid',!!m);document.getElementById(e).textContent=m||''};
 u.oninput=()=>bad(u,'l1','ue');p.oninput=()=>bad(p,'l2','pe');
 tog.onclick=()=>{const s=p.type==='password';p.type=s?'text':'password';tog.textContent=s?'hide':'show';tog.setAttribute('aria-pressed',s);p.focus()};
-document.getElementById('forgot').onclick=e=>{e.preventDefault();msg.style.color='#93c5fd';msg.textContent='استعادة كلمة المرور غير متاحة في النسخة التجريبية — تواصل مع إدارة المعهد.'};
+document.getElementById('forgot').onclick=e=>{e.preventDefault();msg.style.color='#93c5fd';msg.textContent='استعادة كلمة المرور غير متاحة في النسخة التجريبية — تواصل مع فريق Abad X.'};
 const show=(ok)=>{st.innerHTML=`<div class="${ok?'ok':'no'}">${ok?'ACCESS GRANTED':'ACCESS DENIED'}</div>`;st.classList.add("on");if(location.hash==="#demo-denied")st.classList.add("static");if(!ok&&location.hash!=="#demo-denied")setTimeout(()=>st.classList.remove("on"),1600)};
 f.onsubmit=e=>{e.preventDefault();msg.style.color='';let first=null;const uv=u.value.trim();
 if(!uv){bad(u,'l1','ue','الرجاء إدخال اسم المستخدم أو البريد الإلكتروني.');first=u}else if(uv.includes('@')&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(uv)){bad(u,'l1','ue','صيغة البريد الإلكتروني غير صحيحة.');first=u}
