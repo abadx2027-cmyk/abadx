@@ -1,0 +1,57 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>البوابة | Abad X</title><link rel="icon" href="assets/abad-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/style.css">
+<style>
+:root{--mono:'JetBrains Mono','Fira Code',ui-monospace,'DejaVu Sans Mono',monospace;--b:#38bdf8}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -10%,rgba(29,111,255,.28),transparent 55%),#000;overflow-x:hidden}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9;background:repeating-linear-gradient(0deg,rgba(0,0,0,.25) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 60%,rgba(0,0,0,.8))}
+.out{position:fixed;top:14px;left:16px;z-index:10;font-size:.85rem;color:#7fa3d6;border:1px solid #16325c;border-radius:8px;padding:4px 12px;background:rgba(2,6,14,.7)}
+.out:hover{color:var(--b);border-color:var(--b)}
+#stage{position:relative;max-width:1180px;margin:auto;padding:70px 20px 80px}
+.wm{position:relative;z-index:2;text-align:center;margin:0 auto 110px;width:max-content;font-family:var(--mono);font-weight:700;font-size:clamp(3rem,10vw,6.5rem);color:#e8f4ff;letter-spacing:3px;text-shadow:0 0 30px rgba(56,189,248,.45);line-height:1.1}
+.wm b{color:var(--b);text-shadow:0 0 24px var(--b),0 0 60px rgba(56,189,248,.6)}
+.wm small{display:block;font-family:Cairo,sans-serif;font-size:1rem;letter-spacing:0;color:#7fa3d6;text-shadow:none;font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.pc{position:relative;z-index:2;display:block;color:#dbeafe;padding:26px 22px;border-radius:20px;background:rgba(8,14,28,.62);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(56,189,248,.18);box-shadow:inset 0 0 30px rgba(47,140,255,.06);animation:drop .8s cubic-bezier(.2,.9,.3,1.25) both;transition:border-color .25s,box-shadow .25s,transform .25s}
+.pc:nth-child(1){animation-delay:.15s}.pc:nth-child(2){animation-delay:.35s}.pc:nth-child(3){animation-delay:.55s}.pc:nth-child(4){animation-delay:.75s}
+.still .pc{animation:none}
+@keyframes drop{from{opacity:0;transform:translateY(-90px)}}
+.pc .ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:#06142b;border:1px solid #16325c;font-size:1.4rem;margin-bottom:14px}
+.pc h2{margin:0;font-size:1.4rem}.pc .en{display:block;font-family:var(--mono);font-size:.8rem;color:#6f8fbd;letter-spacing:1px;direction:ltr;text-align:right}
+.pc p{margin:12px 0 0;color:#a9c3e6}.pc p .en{margin-top:2px}
+.pc.on{border-color:rgba(56,189,248,.55);box-shadow:0 0 30px rgba(56,189,248,.25),inset 0 0 30px rgba(47,140,255,.12)}
+.pc.on:hover,.pc.on:focus-visible{transform:translateY(-4px);box-shadow:0 0 44px rgba(56,189,248,.45);outline:none;border-color:var(--b)}
+.pc.on .go{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:.85rem;color:#00121f;background:var(--b);border-radius:8px;padding:5px 14px;font-weight:700}
+.pc.lock{opacity:.6;cursor:not-allowed}.pc.lock .ic{filter:grayscale(.6)}
+.soon{position:absolute;top:16px;left:16px;font-size:.75rem;border:1px solid #1d3a66;color:#7fa3d6;border-radius:99px;padding:1px 10px;text-align:center;line-height:1.5}
+.wires{position:absolute;top:0;left:0;z-index:1;pointer-events:none;overflow:visible}
+.wb{fill:none;stroke:rgba(56,189,248,.45);stroke-width:1.5}
+.wp{fill:none;stroke:#a5e4ff;stroke-width:3;stroke-linecap:round;stroke-dasharray:70 930;stroke-dashoffset:1000;animation:pulse 2.8s linear infinite}
+@keyframes pulse{to{stroke-dashoffset:0}}
+@media (max-width:640px){#stage{padding:60px 16px 50px 16px}.cards{padding-left:14px}.wm{margin-bottom:70px}}
+@media (prefers-reduced-motion:reduce){.pc{animation:none}.wp{animation:none;stroke-dasharray:none;stroke:rgba(56,189,248,.6);stroke-width:2}}
+</style></head><body>
+<a class="out" href="index.html" id="out">تسجيل الخروج · Logout</a>
+<main id="stage">
+<h1 class="wm" id="wm">Abad <b>X</b><small>اختر بوابتك · Choose your portal</small></h1>
+<nav class="cards" aria-label="البوابات">
+<a class="pc on" href="home.html"><div class="ic" aria-hidden="true">🎓</div><h2>المتدرب <span class="en">Trainee</span></h2><p>ادخل الأكاديمية <span class="en">Enter the Academy</span></p><span class="go" aria-hidden="true">ENTER &gt;</span></a>
+<div class="pc lock" aria-disabled="true"><span class="soon">قريباً<br>Coming soon</span><div class="ic" aria-hidden="true">🚩</div><h2>تحديات CTF <span class="en">CTF Challenges</span></h2><p>🔒 مغلق حالياً <span class="en">Locked</span></p></div>
+<div class="pc lock" aria-disabled="true"><span class="soon">قريباً<br>Coming soon</span><div class="ic" aria-hidden="true">🧑‍🏫</div><h2>المدرب <span class="en">Instructor</span></h2><p>🔒 مغلق حالياً <span class="en">Locked</span></p></div>
+<div class="pc lock" aria-disabled="true"><span class="soon">قريباً<br>Coming soon</span><div class="ic" aria-hidden="true">🛡️</div><h2>الإدارة <span class="en">Admin</span></h2><p>🔒 مغلق حالياً <span class="en">Locked</span></p></div>
+</nav></main>
+<script>
+if(location.search.includes("still"))document.body.classList.add("still");
+document.getElementById('out').onclick=()=>{sessionStorage.removeItem('abadx-user')};
+const st=document.getElementById('stage'),wm=document.getElementById('wm'),cards=[...st.querySelectorAll('.pc')],NS='http://www.w3.org/2000/svg';
+const svg=document.createElementNS(NS,'svg');svg.setAttribute('class','wires');svg.setAttribute('aria-hidden','true');st.prepend(svg);
+// layout boxes (ignore transforms so lines stay put during drop animation)
+const box=e=>{let l=0,t=0,n=e;while(n&&n!==st){l+=n.offsetLeft;t+=n.offsetTop;n=n.offsetParent}return{l,t,r:l+e.offsetWidth,b:t+e.offsetHeight}};
+function draw(){svg.setAttribute('width',st.offsetWidth);svg.setAttribute('height',st.offsetHeight);
+const w=box(wm),wx=(w.l+w.r)/2,wy=w.b+8,rs=cards.map(box),top=Math.min(...rs.map(c=>c.t));
+svg.innerHTML='<defs><filter id="gl" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>'+rs.map((c,i)=>{const cx=(c.l+c.r)/2;let d;
+if(c.t-top<4){const my=wy+(c.t-wy)*.55;d=`M${wx},${wy} C${wx},${my} ${cx},${my} ${cx},${c.t}`}
+else{const gx=Math.max(4,c.l-11+(i%3)*3),ry=top-20,cy=c.t+34;d=`M${wx},${wy} C${wx},${(wy+ry)/2} ${gx},${(wy+ry)/2} ${gx},${ry} L${gx},${cy} L${c.l},${cy}`}
+return `<path class="wb" d="${d}"/><path class="wp" d="${d}" pathLength="1000" filter="url(#gl)" style="animation-delay:${.9+i*.6}s"/>`}).join('')}
+draw();new ResizeObserver(draw).observe(st);addEventListener('resize',draw);document.fonts&&document.fonts.ready.then(draw);
+</script></body></html>
