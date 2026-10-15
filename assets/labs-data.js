@@ -30,7 +30,7 @@ env:'ثلاثة موجّهات في GNS3/EVE-NG أو Packet Tracer.',topo:`[R1]-
  Area 0              |            Area 1
                  Lo: 10.1.x.0/24 networks on R3`,
 tasks:[T('تفعيل OSPF على R1','أعلن الرابط في Area 0.','router ospf 1\n router-id 1.1.1.1\n network 10.0.12.0 0.0.0.3 area 0','router-id يجب أن يكون فريداً.','<code>show ip ospf interface brief</code>'),
-T('تهيئة الـ ABR','R2 يشارك في المنطقتين.','router ospf 1\n router-id 2.2.2.2\n network 10.0.12.0 0.0.0.3 area 0\n network 10.1.23.0 0.0.0.3 area 1','',''),
+T('تهيئة الـ ABR','R2 يشارك في المنطقتين.','router ospf 1\n router-id 2.2.2.2\n network 10.0.12.0 0.0.0.3 area 0\n network 10.1.23.0 0.0.0.3 area 1','الـ ABR له واجهة في Area 0 وأخرى في Area 1.','<code>show ip ospf</code> يعرض "area border router".'),
 T('تهيئة R3','أعلن الروابط والـ loopbacks في Area 1.','router ospf 1\n router-id 3.3.3.3\n network 10.1.0.0 0.0.255.255 area 1','wildcard 0.0.255.255 يغطي كل 10.1.x.x.','<code>show ip ospf neighbor</code> بحالة FULL.'),
 T('التلخيص على ABR','لخّص Area 1 إلى 10.1.0.0/16.','router ospf 1\n area 1 range 10.1.0.0 255.255.0.0','التلخيص بين المناطق يتم على الـ ABR فقط.','R1 يرى مساراً واحداً O IA 10.1.0.0/16.')]},
 {id:'linuxplus-users',track:'linux',cert:'Linux+',level:'مبتدئ',time:'35 د',title:'إدارة المستخدمين والصلاحيات',summary:'إنشاء مستخدمين ومجموعات وضبط صلاحيات الملفات.',
