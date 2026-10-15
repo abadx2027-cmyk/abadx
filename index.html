@@ -1,1 +1,53 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Abad X | معامل معهد شبكة آباد</title><link rel="icon" href="assets/abad-logo.png"><link rel="stylesheet" href="assets/style.css"></head><body><main></main><script src="assets/labs-data.js"></script><script src="assets/app.js"></script><script>shell();home()</script></body></html>
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>تسجيل الدخول | Abad X</title><link rel="icon" href="assets/abad-logo.png"><link rel="stylesheet" href="assets/style.css">
+<style>
+body{min-height:100vh;display:grid;place-items:center;overflow:hidden;background:#020306}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+.bg .grid2{position:absolute;inset:-40px;background-image:linear-gradient(rgba(56,189,248,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.07) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(circle at 50% 45%,#000 0,transparent 65%);animation:pan 18s linear infinite}
+.bg .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;animation:float 12s ease-in-out infinite alternate}
+.o1{width:480px;height:480px;background:#1d4ed8;top:-120px;right:-80px}.o2{width:420px;height:420px;background:#0891b2;bottom:-140px;left:-100px;animation-delay:-6s}
+@keyframes pan{to{transform:translateY(44px)}}@keyframes float{to{transform:translate(40px,30px) scale(1.1)}}
+.wrap{position:relative;z-index:1;width:min(420px,92vw);padding:24px 0}
+.brandc{text-align:center;margin-bottom:22px}.brandc img{height:64px;background:#fff;border-radius:14px;padding:6px 10px;box-shadow:0 0 36px rgba(56,189,248,.35)}
+.brandc h1{margin:10px 0 0;font-size:2.6rem}.brandc h1 b{color:var(--neon);text-shadow:0 0 26px rgba(56,189,248,.7)}.brandc p{margin:0;color:#a3b2d1}
+.glass{background:rgba(10,16,30,.55);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(56,189,248,.22);border-radius:22px;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.6),inset 0 0 40px rgba(47,140,255,.08)}
+.glass h2{margin:0 0 18px;font-size:1.3rem}
+.f{margin-bottom:16px}.f label{display:block;font-weight:700;margin-bottom:6px}
+.inp{position:relative}.inp input{width:100%;font:inherit;color:var(--txt);background:rgba(2,4,10,.7);border:1px solid #22314f;border-radius:12px;padding:11px 14px;transition:border-color .2s,box-shadow .2s}
+.inp input:focus{outline:none;border-color:var(--neon);box-shadow:0 0 0 3px rgba(56,189,248,.25)}
+.inp input[aria-invalid=true]{border-color:#f87171;box-shadow:0 0 0 3px rgba(248,113,113,.18)}
+#pw{padding-left:84px}.eye{position:absolute;left:6px;top:50%;transform:translateY(-50%);background:#0f1d38;color:var(--neon);border:0;border-radius:8px;padding:5px 10px;font:inherit;font-size:.85rem;cursor:pointer}
+.err{color:#fca5a5;font-size:.88rem;min-height:1.3em;margin-top:4px}
+.row{display:flex;justify-content:space-between;align-items:center;margin:4px 0 18px;font-size:.92rem;gap:8px;flex-wrap:wrap}
+.glass .btn{width:100%;padding:12px;font-size:1.05rem}.btn[aria-busy=true]{opacity:.75;cursor:wait}
+.note{margin-top:14px;text-align:center;font-size:.82rem;color:#7f8fb0}
+.alert{display:none;background:rgba(248,113,113,.1);border:1px solid #7f1d1d;color:#fecaca;border-radius:10px;padding:8px 12px;margin-bottom:14px}.alert.ok{background:rgba(56,189,248,.1);border-color:#1d4ed8;color:#bae6fd}
+@media (prefers-reduced-motion:reduce){.bg *{animation:none!important}}
+</style></head><body>
+<div class="bg" aria-hidden="true"><div class="orb o1"></div><div class="orb o2"></div><div class="grid2"></div></div>
+<main class="wrap" id="main">
+<div class="brandc"><img src="assets/abad-logo.png" alt="شعار معهد شبكة آباد للتدريب"><h1>Abad <b>X</b></h1><p>معامل تطبيقية ذاتية التعلّم</p></div>
+<form class="glass" id="f" novalidate aria-labelledby="lt">
+<h2 id="lt">تسجيل الدخول</h2>
+<div class="alert" id="alert" role="alert"></div>
+<div class="f"><label for="user">اسم المستخدم أو البريد الإلكتروني</label><div class="inp"><input id="user" name="user" autocomplete="username" dir="auto" aria-describedby="ue"></div><div class="err" id="ue" aria-live="polite"></div></div>
+<div class="f"><label for="pw">كلمة المرور</label><div class="inp"><input id="pw" name="pw" type="password" autocomplete="current-password" dir="auto" aria-describedby="pe"><button type="button" class="eye" id="eye" aria-pressed="false" aria-controls="pw">إظهار</button></div><div class="err" id="pe" aria-live="polite"></div></div>
+<div class="row"><label class="chk" style="margin:0;font-weight:400"><input type="checkbox" id="rem"> تذكّرني</label><a href="#" id="forgot">نسيت كلمة المرور؟</a></div>
+<button class="btn" type="submit" id="go">دخول</button>
+<p class="note">نسخة تجريبية — تسجيل الدخول للعرض فقط ولا يتم التحقق من الحساب.</p>
+</form></main>
+<script>
+const f=document.getElementById('f'),u=document.getElementById('user'),p=document.getElementById('pw'),eye=document.getElementById('eye'),al=document.getElementById('alert'),go=document.getElementById('go');
+const setErr=(el,id,m)=>{el.setAttribute('aria-invalid',!!m);document.getElementById(id).textContent=m||''};
+eye.onclick=()=>{const s=p.type==='password';p.type=s?'text':'password';eye.textContent=s?'إخفاء':'إظهار';eye.setAttribute('aria-pressed',s);p.focus()};
+u.oninput=()=>setErr(u,'ue');p.oninput=()=>setErr(p,'pe');
+document.getElementById('forgot').onclick=e=>{e.preventDefault();al.className='alert ok';al.style.display='block';al.textContent='استعادة كلمة المرور غير متاحة في النسخة التجريبية. تواصل مع إدارة المعهد.'};
+f.onsubmit=e=>{e.preventDefault();al.style.display='none';let first=null;
+if(!u.value.trim()){setErr(u,'ue','الرجاء إدخال اسم المستخدم أو البريد الإلكتروني.');first=u}
+else if(u.value.includes('@')&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(u.value.trim())){setErr(u,'ue','صيغة البريد الإلكتروني غير صحيحة.');first=u}
+if(!p.value){setErr(p,'pe','الرجاء إدخال كلمة المرور.');first=first||p}
+if(first){first.focus();al.className='alert';al.style.display='block';al.textContent='يرجى تصحيح الحقول المظللة.';return}
+go.setAttribute('aria-busy','true');go.textContent='جارٍ الدخول…';
+sessionStorage.setItem('abadx-user',u.value.trim());if(document.getElementById('rem').checked)localStorage.setItem('abadx-user',u.value.trim());
+setTimeout(()=>location.href='home.html',500)};
+</script></body></html>
