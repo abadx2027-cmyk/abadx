@@ -1,5 +1,5 @@
 <!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><script>(function(){try{var l=localStorage.getItem("abadx-lang")==="en"?"en":"ar";var h=document.documentElement;h.lang=l;h.dir=l==="en"?"ltr":"rtl";h.setAttribute("data-lang",l)}catch(e){}})()</script><link rel="stylesheet" href="assets/i18n.css"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Abad X | ابدأ رحلتك · Onboarding</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<title>Abad X | ابدأ رحلتك · Onboarding</title><link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="assets/brand/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css?v=3">
 <style>
@@ -12,7 +12,7 @@ html,body{min-height:100%;overflow-x:clip}body{background:var(--bg);overflow-x:h
 .bar{position:fixed;top:0;inset-inline:0;height:3px;background:rgba(56,189,248,.08);z-index:5}
 .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--b2),var(--b));box-shadow:0 0 12px var(--b),0 0 24px var(--b2);transition:width .6s cubic-bezier(.2,.8,.2,1)}
 header{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:20px clamp(16px,4vw,48px)}
-header img{height:38px}.hl{display:flex;gap:14px;align-items:center}
+header img{height:42px}.hl{display:flex;gap:14px;align-items:center}
 .btn-g{background:none;border:1px solid rgba(56,189,248,.25);color:#bcd3f5;font:inherit;font-size:.85rem;padding:6px 14px;border-radius:999px;cursor:pointer}
 .btn-g:hover{border-color:var(--b);color:#fff}.btn-g[hidden]{display:none}
 .skip{color:var(--mut);font-size:.85rem}.skip:hover{color:var(--b)}
@@ -62,7 +62,7 @@ main{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr 1fr;g
 .cta.p{background:linear-gradient(90deg,var(--b2),var(--b));color:#fff;box-shadow:0 0 24px rgba(56,189,248,.4)}.cta.s{color:#cfe6ff}
 #q:focus{outline:none}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 @media (max-width:900px){main{grid-template-columns:1fr}.laptop{position:static}.term{height:140px;font-size:.78rem;margin-top:132px}.code{font-size:.64rem}.agent{width:60px;height:60px}}
-@media (max-width:520px){.opts{grid-template-columns:1fr}.card{padding:12px 14px}.ic{width:40px;height:40px}header img{height:30px}}
+@media (max-width:520px){.opts{grid-template-columns:1fr}.card{padding:12px 14px}.ic{width:40px;height:40px}header img{height:36px}}
 .still *,.still *:before,.still *:after{animation:none!important;transition:none!important}.still .card,.still .rec{opacity:1;transform:none}
 
 [dir=ltr] .arr{display:inline-block;transform:scaleX(-1)}
@@ -70,7 +70,7 @@ main{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr 1fr;g
 </style></head><body>
 <canvas id="fx" aria-hidden="true"></canvas><div class="grid"></div><div class="glow g1"></div><div class="glow g2"></div>
 <div class="bar" role="progressbar" aria-label="التقدم Progress" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0"><i id="bar"></i></div>
-<header><img src="assets/abadx-logo.svg" alt="Abad X"><div class="hl"><button class="btn-g" id="back" hidden><span class="arr" aria-hidden="true">→</span> رجوع · Back</button><a class="skip" id="skip" href="portal.html">تخطي · Skip</a></div></header>
+<header><img src="assets/brand/abadx-mark.png" alt="Abad X"><div class="hl"><button class="btn-g" id="back" hidden><span class="arr" aria-hidden="true">→</span> رجوع · Back</button><a class="skip" id="skip" href="portal.html">تخطي · Skip</a></div></header>
 <main>
 <section aria-labelledby="q">
 <div class="step-n" id="sn"></div>
