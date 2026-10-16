@@ -139,6 +139,8 @@
     'room.tryHint': ['جرّب التلميح.', 'Try the hint.'],
     'room.wrong': ['إجابة غير صحيحة', 'Incorrect answer'],
     'room.total': ['مجموع نقاطك:', 'Your total score:'],
+    'room.termOut': ['مخرجات الطرفية', 'Terminal output'],
+    'room.cmd': ['أدخل أمراً', 'Enter a command'],
     'room.labFail': ['تعذّر تشغيل المختبر.', 'Could not start the lab.']
   };
 

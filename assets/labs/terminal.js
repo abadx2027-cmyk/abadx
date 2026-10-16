@@ -13,8 +13,8 @@ const HOMEP=['home',USER];let cwd=HOMEP.slice();
 const ENV={HOME:'/home/'+USER,USER,SHELL:'/bin/bash',PATH:'/usr/local/bin:/usr/bin:/bin',PWD:'/home/'+USER,HOSTNAME:HOST,'?':'0'};
 const FN={};const HIST=[];let hi=0;
 el.innerHTML=`<div class="term-wrap scan"><div class="tbar"><i></i><i></i><i></i><span class="tbt"></span></div>
-<div class="term" role="log" aria-label="مخرجات الطرفية"></div>
-<form class="tinput"><span class="pr"></span><input autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="أدخل أمراً"></form></div>`;
+<div class="term" role="log" aria-label="مخرجات الطرفية" data-i18n-aria="room.termOut"></div>
+<form class="tinput"><span class="pr"></span><input autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="${(window.AbadI18n&&AbadI18n.lang()==='en')||document.documentElement.getAttribute('data-lang')==='en'?'Enter a command':'أدخل أمراً'}" data-i18n-aria="room.cmd"></form></div>`;
 const term=el.querySelector('.term'),tin=el.querySelector('input'),tpr=el.querySelector('.tinput .pr'),tbt=el.querySelector('.tbt');
 // ---------- fs helpers ----------
 function nodeAt(parts){let n=ROOT;for(const p of parts){if(!n.d||!Object.prototype.hasOwnProperty.call(n.d,p))return null;n=n.d[p]}return n}

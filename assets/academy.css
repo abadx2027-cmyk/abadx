@@ -1,10 +1,10 @@
 :root{--mono:'JetBrains Mono','Fira Code',ui-monospace,'DejaVu Sans Mono',monospace;--b:#38bdf8}
 body{min-height:100vh;background:radial-gradient(ellipse at 50% -10%,rgba(29,111,255,.26),transparent 55%),#000;overflow-x:hidden}
 body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9;background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 60%,rgba(0,0,0,.75))}
-.skip{position:absolute;right:-999px;top:8px;background:var(--b);color:#001022;padding:6px 12px;border-radius:8px;z-index:20}.skip:focus{right:12px}
+.skip{position:absolute;inset-inline-start:12px;top:8px;background:var(--b);color:#001022;padding:10px 14px;min-height:44px;box-sizing:border-box;border-radius:8px;z-index:20;clip-path:inset(50%);width:1px;height:1px;overflow:hidden;white-space:nowrap}.skip:focus{clip-path:none;width:auto;height:auto;overflow:visible}
 .topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;max-width:1180px;margin:auto;padding:16px 20px 0;position:relative;z-index:10}
-.crumb{font-size:.9rem;color:#7fa3d6}.crumb a{color:#7fa3d6}.crumb a:hover{color:var(--b)}.crumb span[aria-current]{color:#dbeafe}
-.back{font-size:.85rem;color:#7fa3d6;border:1px solid #16325c;border-radius:8px;padding:4px 12px;background:rgba(2,6,14,.7);white-space:nowrap}.back:hover{color:var(--b);border-color:var(--b)}
+.crumb{font-size:.9rem;color:#93b0da}.crumb a{color:#93b0da}.crumb a:hover{color:var(--b)}.crumb span[aria-current]{color:#dbeafe}
+.back{font-size:.85rem;color:#9db8e0;border:1px solid #16325c;border-radius:8px;padding:4px 12px;background:rgba(2,6,14,.7);white-space:nowrap}.back:hover{color:var(--b);border-color:var(--b)}
 main{position:relative;z-index:2;max-width:1180px;margin:auto;padding:30px 20px 40px}
 .head{text-align:center;margin:10px 0 40px}
 .wm{font-family:var(--mono);font-weight:700;font-size:clamp(2.2rem,7vw,3.8rem);margin:0;color:#e8f4ff;letter-spacing:3px;text-shadow:0 0 30px rgba(56,189,248,.45);line-height:1.15}.wm b{color:var(--b);text-shadow:0 0 24px var(--b)}
@@ -27,7 +27,7 @@ a.sc:hover,a.sc:focus-visible{transform:translateY(-4px);border-color:var(--b);b
 .tags{list-style:none;padding:0;margin-bottom:0;display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;direction:ltr;justify-content:flex-end}
 .tag{font-family:var(--mono);font-size:.74rem;color:#bfe9ff;background:#06142b;border:1px solid #1d3a66;border-radius:6px;padding:1px 8px}
 .empty{text-align:center;padding:50px 20px;border:1px dashed #1d3a66;border-radius:18px;color:#a9c3e6}
-footer{position:relative;z-index:2;text-align:center;color:#5f7aa6;font-size:.8rem;padding:10px 20px 30px}
+footer{position:relative;z-index:2;text-align:center;color:#7d96bf;font-size:.8rem;padding:10px 20px 30px}
 @media (max-width:640px){main{padding:20px 14px 30px}.topbar{padding:12px 14px 0}.grid{gap:14px}}
 @media (prefers-reduced-motion:reduce){.sc{transition:none}}
 .badge.big{width:96px;height:96px;margin:0 auto 14px;border-radius:22px}.badge.big img{max-width:64px;max-height:56px}.badge.mono.big{font-size:1.6rem}
@@ -101,3 +101,8 @@ li[hidden]{display:none}
 @media (prefers-reduced-motion:reduce){.rm-node,.rm.on .rm-node{animation:none;opacity:1;transform:none;transition:none}.rm-mk,.rm.on .rm-mk{animation:none;stroke-dashoffset:0}.rm-flow,.ha{animation:none;display:none}.rm-comet,.rm-tail,.rm-tail2{display:none}.cc.hl{animation:none;outline:3px solid #38bdf8}}
 .still .rm-node,.still .rm.on .rm-node{animation:none;opacity:1;transform:none}.still .rm-mk,.still .rm.on .rm-mk{animation:none;stroke-dashoffset:0}.still .rm-flow,.still .ha{animation:none;display:none}.still .rm-comet,.still .rm-tail,.still .rm-tail2{display:none}
 @media (max-width:720px){.rm h2 .en{display:block;margin:2px 0 0}.rm{padding:18px 12px 20px}}
+
+/* a11y: logical arrows + larger touch targets */
+[dir=ltr] .arr{display:inline-block;transform:scaleX(-1)}
+.back{display:inline-flex;align-items:center;gap:4px;box-sizing:border-box}
+@media (max-width:640px),(pointer:coarse){.back{min-height:44px;padding:8px 14px}.crumb a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px}}

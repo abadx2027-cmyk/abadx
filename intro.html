@@ -2,8 +2,8 @@
 <title>Abad X — Intro</title><link rel="icon" href="assets/abadx-logo.svg">
 <script>(function(){var n=localStorage.getItem('abadx_onboarding_done')==='1'?'portal.html':'onboarding.html';window.ABX_NEXT=n;
 if(sessionStorage.getItem('abadx_intro_seen')==='1'||matchMedia('(prefers-reduced-motion: reduce)').matches){sessionStorage.setItem('abadx_intro_seen','1');location.replace(n)}})();</script>
-<style>
-html,body{margin:0;height:100%;background:#000;overflow:hidden;font-family:system-ui,"Segoe UI",Tahoma,sans-serif;color:#e6f0ff}
+<link rel="preload" href="assets/Cairo.ttf" as="font" type="font/ttf" crossorigin><style>@font-face{font-family:Cairo;src:url(assets/Cairo.ttf) format("truetype");font-weight:200 1000;font-display:swap}
+html,body{margin:0;height:100%;background:#000;overflow:hidden;font-family:Cairo,system-ui,"Segoe UI",Tahoma,sans-serif;color:#e6f0ff}
 video{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;background:#000 url(assets/intro/abadx-intro-poster.jpg) center/cover}
 .vig{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,transparent 35%,rgba(0,0,0,.75))}
 .sweep{position:fixed;inset:0;pointer-events:none;opacity:0;background:linear-gradient(100deg,transparent 40%,rgba(80,160,255,.35) 50%,transparent 60%);background-size:250% 100%;background-position:120% 0}
@@ -22,7 +22,7 @@ video{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;background:
 .mark .welcome{font-size:clamp(1rem,2.4vw,1.6rem);color:#7dd3fc;font-weight:700;margin:0 0 .2em;text-shadow:0 0 6px #000,0 0 14px #38bdf8,0 0 30px rgba(29,111,255,.8)}</style></head><body>
 <video id="v" playsinline preload="auto" poster="assets/intro/abadx-intro-poster.jpg"><source src="assets/intro/abadx-intro.mp4?v=5" type="video/mp4"></video>
 <div class="vig"></div><div class="sweep"></div>
-<div class="mark" aria-hidden="true"><img src="assets/abadx-logo.svg" alt=""><h2 class="welcome">مرحباً بك في · Welcome to</h2><h1>Abad X</h1><p>المنصة الرائدة في التعلّم العملي لتقنية المعلومات — The Leading Hands-on IT Learning Platform</p></div>
+<div class="mark" aria-hidden="true"><img src="assets/abadx-logo.svg" alt="Abad X"><h2 class="welcome">مرحباً بك في · Welcome to</h2><h1>Abad X</h1><p>المنصة الرائدة في التعلّم العملي لتقنية المعلومات — The Leading Hands-on IT Learning Platform</p></div>
 <button class="btn" id="skip" type="button">تخطي / Skip</button>
 
 <script>

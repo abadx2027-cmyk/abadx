@@ -13,7 +13,8 @@ if(!/^[a-z0-9-]{1,40}$/.test(id))return fail('معرّف غرفة غير صال�
 loadScript('assets/rooms/'+id+'.js?v='+V).then(()=>{const R=window.ABADX_ROOM;if(!R||R.id!==id)throw 0;return start(R)}).catch(e=>{console.warn(e);fail('تعذّر تحميل الغرفة.')});
 
 async function start(R){
-document.title='Abad X | '+R.ar;
+const isEn=()=>document.documentElement.getAttribute('data-lang')==='en';
+const setTitle=()=>{document.title='Abad X | '+(isEn()&&R.en?R.en:R.ar)};setTitle();document.addEventListener('abadx:langchange',setTitle);
 if(R.wide)document.body.classList.add('wide');
 const TOTAL=R.tasks.reduce((a,t)=>a+t.questions.reduce((b,q)=>b+q.pts,0),0);
 const KEY='abadx_room_'+R.id;
@@ -27,16 +28,16 @@ function doneCount(){return R.tasks.filter(taskDone).length}
 function renderHero(){const prog=TOTAL?Math.min(100,Math.round(st.pts/TOTAL*100)):0;const C=2*Math.PI*40;st.done=doneCount();save();
 $('#hero').innerHTML=`<div class="hex"><svg viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${R.icon}</svg></div>
 <div class="hhead"><h1>${R.ar} <span class="en">${R.en}</span></h1>
-<div class="meta"><span class="pill dif">● ${R.difficulty[0]} · ${R.difficulty[1]}</span><span class="pill">⏱ ${R.minutes} دقيقة</span><span class="pill pts">${st.pts} / ${TOTAL} pts</span>${R.tags.map(t=>'<span class="pill">#'+t+'</span>').join('')}</div></div>
-<div class="ring"><svg width="92" height="92"><circle class="bg2" cx="46" cy="46" r="40" fill="none" stroke-width="7"/><circle class="fg" cx="46" cy="46" r="40" fill="none" stroke-width="7" stroke-dasharray="${C}" stroke-dashoffset="${C-C*prog/100}"/></svg><b>${prog}%</b><small>${doneCount()}/${R.tasks.length} مهام</small></div>`;}
-$('#intro').textContent=R.intro;
+<div class="meta"><span class="pill dif">● ${R.difficulty[0]} · ${R.difficulty[1]}</span><span class="pill">⏱ ${R.minutes} ${isEn()?'min':'دقيقة'}</span><span class="pill pts">${st.pts} / ${TOTAL} pts</span>${R.tags.map(t=>'<span class="pill">#'+t+'</span>').join('')}</div></div>
+<div class="ring"><svg width="92" height="92"><circle class="bg2" cx="46" cy="46" r="40" fill="none" stroke-width="7"/><circle class="fg" cx="46" cy="46" r="40" fill="none" stroke-width="7" stroke-dasharray="${C}" stroke-dashoffset="${C-C*prog/100}"/></svg><b>${prog}%</b><small>${doneCount()}/${R.tasks.length} ${isEn()?'tasks':'مهام'}</small></div>`;}
+$('#intro').textContent=R.intro;$('#intro').setAttribute('lang','ar');$('#intro').setAttribute('dir','rtl');
 const TASKS=$('#tasks');
 const fixNL=s=>String(s).replace(/\\n/g,'\n');
 function bodyHTML(b){return b.map(x=>{
- if(x.h)return`<h3>${x.h}</h3>`;if(x.p)return`<p>${x.p}</p>`;
+ if(x.h)return`<h3 lang="ar" dir="rtl">${x.h}</h3>`;if(x.p)return`<p lang="ar" dir="rtl">${x.p}</p>`;
  if(x.code)return`<div class="code"><button class="cpy" type="button">نسخ · Copy</button>${esc(fixNL(x.code))}</div>`;
- if(x.tip)return`<div class="call tip"><b>💡 تلميح</b><span>${x.tip}</span></div>`;
- if(x.warn)return`<div class="call warn"><b>⚠ تنبيه</b><span>${x.warn}</span></div>`;
+ if(x.tip)return`<div class="call tip"><b>💡 تلميح</b><span lang="ar" dir="rtl">${x.tip}</span></div>`;
+ if(x.warn)return`<div class="call warn"><b>⚠ تنبيه</b><span lang="ar" dir="rtl">${x.warn}</span></div>`;
  if(x.html)return x.html;return''}).join('')}
 R.tasks.forEach(t=>{
  const el=ce('div','task'+(taskDone(t)?' done':''));el.id='task'+t.n;
@@ -45,10 +46,10 @@ R.tasks.forEach(t=>{
   <svg class="chk" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" stroke="#4ade80" stroke-width="1.6"/><path d="M8 12.5 11 15.5 16 9"/></svg>
   <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
   <div class="tbody">${bodyHTML(t.body)}${t.questions.map((q,i)=>{const sv=st.solved[t.n+'.'+i];
-   return`<div class="q${sv?' ok':''}" id="q${t.n}_${i}"><p class="qt">${q.q} <span style="color:var(--b);font-family:var(--mono)">(+${q.pts})</span></p>
+   return`<div class="q${sv?' ok':''}" id="q${t.n}_${i}"><p class="qt" lang="ar" dir="rtl">${q.q} <span style="color:var(--b);font-family:var(--mono)">(+${q.pts})</span></p>
     <div class="qrow"><input aria-label="${esc(q.q.replace(/<[^>]+>/g,''))}" placeholder="${q.ph||''}" ${sv?'disabled value="✓ إجابة صحيحة"':''}><button class="sub" ${sv?'disabled':''}>${sv?'تم ✓':'تحقّق · Submit'}</button></div>
     <p class="fb" aria-live="polite"></p>
-    ${q.hint?`<button class="hintbtn" type="button">💡 تلميح (−5 نقاط)</button><p class="hinttext${st.hints[t.n+'.'+i]?' show':''}">${q.hint}</p>`:''}</div>`}).join('')}</div>`;
+    ${q.hint?`<button class="hintbtn" type="button">💡 تلميح (−5 نقاط)</button><p lang="ar" dir="rtl" class="hinttext${st.hints[t.n+'.'+i]?' show':''}">${q.hint}</p>`:''}</div>`}).join('')}</div>`;
  TASKS.appendChild(el);
 });
 TASKS.addEventListener('click',e=>{const h=e.target.closest('.thead');if(h){const t=h.parentNode;const open=t.classList.toggle('open');h.setAttribute('aria-expanded',open);return}
@@ -71,7 +72,7 @@ TASKS.addEventListener('click',async e=>{const b=e.target.closest('.sub');if(!b|
 function checkComplete(){if(doneCount()===R.tasks.length){st.complete=1;save();showCel()}}
 function showCel(){$('#celn').textContent=R.ar+' · '+R.en;$('#celp').textContent='مجموع نقاطك: '+st.pts+' / '+TOTAL;$('#cel').classList.add('show')}
 $('#celclose').onclick=e=>{e.preventDefault();$('#cel').classList.remove('show')};
-renderHero();
+renderHero();document.addEventListener('abadx:langchange',renderHero);
 {const t=R.tasks.find(t=>!taskDone(t))||R.tasks[0];const el=$('#task'+t.n);el.classList.add('open');el.querySelector('.thead').setAttribute('aria-expanded','true')}
 if(st.complete)setTimeout(showCel,400);
 
