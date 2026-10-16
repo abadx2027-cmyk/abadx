@@ -1,4 +1,4 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><script>(function(){try{var l=localStorage.getItem("abadx-lang")==="en"?"en":"ar";var h=document.documentElement;h.lang=l;h.dir=l==="en"?"ltr":"rtl";h.setAttribute("data-lang",l)}catch(e){}})()</script><link rel="stylesheet" href="assets/i18n.css"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Abad X | تعلّم ذاتي</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="assets/favicon-32.png" sizes="32x32"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/style.css?v=3">
 <style>
@@ -40,11 +40,11 @@ main{position:relative;z-index:2;max-width:1120px;margin:auto;padding:20px clamp
 footer{position:relative;z-index:2;text-align:center;color:#51688c;font-size:.8rem;padding:24px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style></head><body>
-<nav class="topbar"><img src="assets/abadx-logo.svg" alt="Abad X"><span class="crumb"><a href="portal.html">البوابة</a> / <span aria-current="page">تعلّم ذاتي</span></span></nav>
+<nav class="topbar"><img src="assets/abadx-logo.svg" alt="Abad X"><span class="crumb"><a href="portal.html" data-i18n="common.portal">البوابة</a> / <span aria-current="page" data-i18n="common.self">تعلّم ذاتي</span></span></nav>
 <main>
 <header class="head"><h1>تعلّم ذاتي <span class="en">Self-Learning</span></h1>
 <p>غرف تدريب عملية تفاعلية مصنّفة حسب التخصص — مختبرات داخل المتصفح، مهام، وأعلام ABADX{...}. اختر تخصصاً أو تصفّح الكل.</p></header>
-<div class="chips" id="chips" role="tablist" aria-label="تصفية حسب التخصص"></div>
+<div class="chips" id="chips" role="tablist" aria-label="تصفية حسب التخصص" data-i18n-aria="sl.filter"></div>
 <div id="sections"></div>
 </main>
 <footer>© 2026 Abad X</footer>
@@ -101,10 +101,10 @@ const ROOMS=[
 ];
 function progOf(id){try{const st=JSON.parse(localStorage.getItem('abadx_room_'+id)||'{}');if(st.complete)return 100;if(st.pts&&st.maxpts)return Math.min(99,Math.round(st.pts/st.maxpts*100));if(st.solved)return Math.min(99,Math.round(Object.keys(st.solved).length/12*100));}catch(e){}return 0}
 function card(r){const prog=progOf(r.id),done=prog>=100;
- return `<a class="room${done?' done':''}" href="room.html?r=${r.id}"><span class="done-badge">مكتملة ✓</span><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true">${r.icon}</svg></span>
+ return `<a class="room${done?' done':''}" href="room.html?r=${r.id}"><span class="done-badge" data-i18n="sl.done">مكتملة ✓</span><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true">${r.icon}</svg></span>
   <h3>${r.ar} <span class="en">${r.en}</span></h3><p>${r.desc}</p>
   <div class="rmeta"><span class="pill dif">● ${r.dif[0]} · ${r.dif[1]}</span><span class="pill">⏱ ${r.min} دقيقة</span><span class="pill">${r.tasks} مهام</span></div>
-  <div class="pbar"><i style="width:${prog}%"></i></div><div class="pct"><span>التقدّم</span><span>${prog}%</span></div></a>`}
+  <div class="pbar"><i style="width:${prog}%"></i></div><div class="pct"><span data-i18n="common.progress">التقدّم</span><span>${prog}%</span></div></a>`}
 const chips=document.getElementById('chips'),sections=document.getElementById('sections');
 const emblem=k=>`<svg class="emb" viewBox="0 0 64 64" aria-hidden="true"><path class="fr" d="M32 3.5 56.7 17.75v28.5L32 60.5 7.3 46.25v-28.5z"/><path class="fr2" d="M32 9 52 20.5v23L32 55 12 43.5v-23z"/><g class="gl" transform="translate(14 14) scale(1.5)">${ICONS[k]}</g></svg>`;
 chips.innerHTML=`<button type="button" aria-selected="true" data-f="all">الكل · All</button>`+SECTIONS.map(s=>`<button type="button" aria-selected="false" data-f="${s.id}"><svg viewBox="0 0 24 24">${ICONS[s.icon]}</svg>${s.ar}</button>`).join('');
@@ -115,4 +115,4 @@ sections.innerHTML=SECTIONS.map(s=>{
 chips.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
  [...chips.children].forEach(x=>x.setAttribute('aria-selected',x===b));
  const f=b.dataset.f;[...sections.children].forEach(sec=>{sec.hidden=f!=='all'&&sec.dataset.sec!==f})});
-</script></body></html>
+</script><script src="assets/i18n.js"></script></body></html>

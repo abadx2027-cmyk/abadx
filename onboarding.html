@@ -1,4 +1,4 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><script>(function(){try{var l=localStorage.getItem("abadx-lang")==="en"?"en":"ar";var h=document.documentElement;h.lang=l;h.dir=l==="en"?"ltr":"rtl";h.setAttribute("data-lang",l)}catch(e){}})()</script><link rel="stylesheet" href="assets/i18n.css"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Abad X | ابدأ رحلتك · Onboarding</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="assets/favicon-32.png" sizes="32x32">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css?v=3">
@@ -104,10 +104,10 @@ let i=0;(function t(){d.textContent=plain.slice(0,++i);term.scrollTop=1e4;i<plai
 function glitch(){if(still)return;scr.classList.remove('gl');void scr.offsetWidth;scr.classList.add('gl')}
 function prog(n){$('bar').style.width=(n/4*100)+'%';document.querySelector('.bar').setAttribute('aria-valuenow',n);document.documentElement.style.setProperty('--p',n/4)}
 function render(focus){const s=STEPS[step];prog(step);$('back').hidden=step===0;$('sn').textContent=`STEP 0${step+1} / 04`;
-$('live').textContent=`الخطوة ${step+1} من 4: ${s.ar} — ${s.en}`;
-const st=$('stage');st.innerHTML=`<div class="opts" role="radiogroup" aria-labelledby="q">${s.o.map((o,i)=>`<button class="card" role="radio" aria-checked="${ans[s.k]===o[0]}" data-v="${o[0]}" style="--i:${i}"><span class="ic">${svg(o[4]||I[o[3]])}</span><span><b>${o[1]}</b><small>${o[2]}</small></span></button>`).join('')}</div>`;
+const EN=document.documentElement.lang==='en';$('live').textContent=EN?`Step ${step+1} of 4: ${s.en}`:`الخطوة ${step+1} من 4: ${s.ar} — ${s.en}`;
+const st=$('stage');st.innerHTML=`<div class="opts" role="radiogroup" aria-labelledby="q">${s.o.map((o,i)=>`<button class="card" role="radio" aria-checked="${ans[s.k]===o[0]}" data-v="${o[0]}" style="--i:${i}"><span class="ic">${svg(o[4]||I[o[3]])}</span><span>${EN?`<b>${o[2]}</b>`:`<b>${o[1]}</b><small>${o[2]}</small>`}</span></button>`).join('')}</div>`;
 st.classList.remove('out');
-type($('q'),s.ar,still?0:38).then(()=>type($('qe'),s.en,18));
+type($('q'),EN?s.en:s.ar,still?0:38).then(()=>EN?($('qe').textContent=''):type($('qe'),s.en,18));
 st.querySelectorAll('.card').forEach(c=>c.onclick=()=>pick(c));
 if(focus)(st.querySelector('[aria-checked=true]')||st.querySelector('.card')).focus({preventScroll:true});}
 $('stage').addEventListener('keydown',e=>{const cs=[...$('stage').querySelectorAll('.card')],i=cs.indexOf(document.activeElement);if(i<0)return;
@@ -183,4 +183,4 @@ run();
 const cv=$('fx'),cx=cv.getContext('2d');let W,H,P=[];function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight;P=Array.from({length:Math.min(90,W/14)},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+.3,v:Math.random()*.25+.05,a:Math.random()}))}
 rs();addEventListener('resize',rs);function draw(){cx.clearRect(0,0,W,H);P.forEach(p=>{if(!still){p.y-=p.v;if(p.y<0)p.y=H}cx.fillStyle=`rgba(125,211,252,${.25+p.a*.5})`;cx.beginPath();cx.arc(p.x,p.y,p.r,0,7);cx.fill()});still||requestAnimationFrame(draw)}draw();
 })();
-</script></body></html>
+</script><script src="assets/i18n.js"></script><script>document.addEventListener('abadx:langchange',function(){var st=document.getElementById('stage');if(st&&st.querySelector('.opts')&&typeof render==='function')render(false)});</script></body></html>

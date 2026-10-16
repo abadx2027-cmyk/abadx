@@ -1,11 +1,11 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><script>(function(){try{var l=localStorage.getItem("abadx-lang")==="en"?"en":"ar";var h=document.documentElement;h.lang=l;h.dir=l==="en"?"ltr":"rtl";h.setAttribute("data-lang",l)}catch(e){}})()</script><link rel="stylesheet" href="assets/i18n.css"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Abad X | الأكاديمية</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="assets/favicon-32.png" sizes="32x32"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/academy.css"></head><body>
-<a class="skip" href="#main">تخطَّ إلى المحتوى</a>
-<nav class="topbar" aria-label="مسار التنقل"><div class="crumb"><a href="portal.html">البوابة</a> / <span aria-current="page">الأكاديمية</span></div><a class="back" href="portal.html">→ العودة إلى البوابة · Portal</a></nav>
-<main id="main"><header class="head"><div class="wm" aria-hidden="true">Abad <b>X</b></div><h1>الأكاديمية <span class="en">Academy</span></h1><p>اختر التخصص لاستعراض الجهات المانحة للشهادات ومساراتها.</p></header>
-<ul class="grid" id="list" aria-label="التخصصات"></ul></main>
+<a class="skip" href="#main" data-i18n="common.skip">تخطَّ إلى المحتوى</a>
+<nav class="topbar" aria-label="مسار التنقل" data-i18n-aria="common.breadcrumb"><div class="crumb"><a href="portal.html" data-i18n="common.portal">البوابة</a> / <span aria-current="page" data-i18n="common.academy">الأكاديمية</span></div><a class="back" href="portal.html">→ العودة إلى البوابة · Portal</a></nav>
+<main id="main"><header class="head"><div class="wm" aria-hidden="true">Abad <b>X</b></div><h1>الأكاديمية <span class="en">Academy</span></h1><p data-i18n="academy.intro">اختر التخصص لاستعراض الجهات المانحة للشهادات ومساراتها.</p></header>
+<ul class="grid" id="list" aria-label="التخصصات" data-i18n-aria="academy.list"></ul></main>
 <footer>© 2026 Abad X</footer>
 <script src="assets/academy-data.js?v=2"></script><script>
 document.getElementById('list').innerHTML=SPECIALTIES.map(s=>`<li><a class="sc" href="specialty.html?s=${s.id}">${emblem(s.icon)}<h2>${s.ar} <span class="en">${s.en}</span></h2><p>${s.dar}<span class="en">${s.den}</span></p><div class="meta"><span>${s.vendors.length} جهات · vendors</span><span class="go" aria-hidden="true">ENTER &gt;</span></div></a></li>`).join('');
-</script></body></html>
+</script><script src="assets/i18n.js"></script></body></html>

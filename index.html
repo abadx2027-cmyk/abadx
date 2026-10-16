@@ -1,4 +1,4 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><script>(function(){try{var l=localStorage.getItem("abadx-lang")==="en"?"en":"ar";var h=document.documentElement;h.lang=l;h.dir=l==="en"?"ltr":"rtl";h.setAttribute("data-lang",l)}catch(e){}})()</script><link rel="stylesheet" href="assets/i18n.css"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Abad X | دخول آمن</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="assets/favicon-32.png" sizes="32x32"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
@@ -53,21 +53,21 @@ form{direction:ltr;text-align:left}
 <main class="wrap">
 <div class="top"><h1 class="glitch" data-t="Abad X">Abad <b>X</b></h1>
 <svg class="eye" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 40c0-12 6-26 14-30 8 4 14 18 14 30"/><path d="M4 44c2-16 9-30 20-36 11 6 18 20 20 36"/><path d="M17 27c2-3 4.5-4 7-4s5 1 7 4c-2 3-4.5 4-7 4s-5-1-7-4z"/><circle cx="24" cy="27" r="1.8" fill="currentColor"/></svg>
-<img src="assets/abadx-logo.svg" alt="شعار Abad X"></div>
+<img src="assets/abadx-logo.svg" alt="شعار Abad X" data-i18n-alt="login.logo"></div>
 <section class="term" aria-labelledby="tt">
 <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>abadx@secure-shell: ~</span></div>
 <div class="body">
-<h2 id="tt" class="sr">تسجيل الدخول إلى Abad X</h2>
+<h2 id="tt" class="sr" data-i18n="login.heading">تسجيل الدخول إلى Abad X</h2>
 <pre id="boot" aria-hidden="true"></pre>
-<p class="ar">🔒 منطقة مقيّدة — سجّل الدخول للوصول إلى المعامل التطبيقية.</p>
+<p class="ar" data-i18n="login.restricted">🔒 منطقة مقيّدة — سجّل الدخول للوصول إلى المعامل التطبيقية.</p>
 <form id="f" novalidate>
-<div class="ln" id="l1"><label for="user">login:<small>المستخدم / البريد</small></label><input id="user" autocomplete="username" spellcheck="false" aria-describedby="ue"><span class="cur" id="c1" aria-hidden="true"></span></div><div class="err" id="ue" aria-live="polite"></div>
-<div class="ln" id="l2"><label for="pw">password:<small>كلمة المرور</small></label><input id="pw" type="password" autocomplete="current-password" aria-describedby="pe"><button type="button" class="tog" id="tog" aria-pressed="false" aria-controls="pw">show</button></div><div class="err" id="pe" aria-live="polite"></div>
-<div class="opts"><label class="ck"><input type="checkbox" id="rem"><span style="font-family:Cairo">تذكّرني</span></label><a href="#" id="forgot" style="font-family:Cairo">نسيت كلمة المرور؟</a></div>
+<div class="ln" id="l1"><label for="user">login:<small data-i18n="login.user">المستخدم / البريد</small></label><input id="user" autocomplete="username" spellcheck="false" aria-describedby="ue"><span class="cur" id="c1" aria-hidden="true"></span></div><div class="err" id="ue" aria-live="polite"></div>
+<div class="ln" id="l2"><label for="pw">password:<small data-i18n="login.pass">كلمة المرور</small></label><input id="pw" type="password" autocomplete="current-password" aria-describedby="pe"><button type="button" class="tog" id="tog" aria-pressed="false" aria-controls="pw">show</button></div><div class="err" id="pe" aria-live="polite"></div>
+<div class="opts"><label class="ck"><input type="checkbox" id="rem"><span style="font-family:Cairo" data-i18n="login.remember">تذكّرني</span></label><a href="#" id="forgot" style="font-family:Cairo" data-i18n="login.forgot">نسيت كلمة المرور؟</a></div>
 <button class="go" type="submit">&gt; AUTHENTICATE_</button>
 <p class="err" id="msg" role="alert" style="text-align:center;margin-top:10px"></p>
 </form></div></section>
-<p class="note">نسخة تجريبية — الدخول للعرض فقط دون تحقق فعلي من الحساب</p>
+<p class="note" data-i18n="login.note">نسخة تجريبية — الدخول للعرض فقط دون تحقق فعلي من الحساب</p>
 </main>
 <div id="status" aria-hidden="true"></div>
 <script>
@@ -98,4 +98,4 @@ msg.style.color='#7dd3fc';msg.textContent='تم منح الوصول… جارٍ 
 sessionStorage.setItem('abadx-user',uv);document.getElementById('rem').checked?localStorage.setItem('abadx-user',uv):localStorage.removeItem('abadx-user');
 setTimeout(()=>location.href='intro.html',RM?300:1300)};
 if(location.hash==='#demo-denied')setTimeout(()=>f.requestSubmit(),1500);
-</script></body></html>
+</script><script src="assets/i18n.js"></script></body></html>

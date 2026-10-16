@@ -1,4 +1,4 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><script>(function(){try{var l=localStorage.getItem("abadx-lang")==="en"?"en":"ar";var h=document.documentElement;h.lang=l;h.dir=l==="en"?"ltr":"rtl";h.setAttribute("data-lang",l)}catch(e){}})()</script><link rel="stylesheet" href="assets/i18n.css"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Abad X | غرفة تعلّم</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="assets/favicon-32.png" sizes="32x32">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css?v=3">
@@ -118,17 +118,17 @@ body.wide .wrap{grid-template-columns:minmax(0,1fr) minmax(400px,600px)}
 <div class="wrap">
 <main id="main">
 <section class="hero" id="hero"></section>
-<p class="intro" id="intro">جارٍ تحميل الغرفة…</p>
+<p class="intro" id="intro" data-i18n="room.loading">جارٍ تحميل الغرفة…</p>
 <div class="sr" aria-live="polite" id="live"></div>
 <div id="tasks"></div>
 </main>
-<aside class="tp" id="tp" aria-label="المختبر التفاعلي"><div class="labtabs" id="labtabs" role="tablist"></div><div id="panes"></div></aside>
+<aside class="tp" id="tp" aria-label="المختبر التفاعلي" data-i18n-aria="room.lab"><div class="labtabs" id="labtabs" role="tablist"></div><div id="panes"></div></aside>
 </div>
 <div class="cel" id="cel" role="dialog" aria-modal="true" aria-labelledby="celh"><div class="box">
 <svg class="badge" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#2563eb"/></linearGradient></defs>
 <polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="#06101f" stroke="url(#bg)" stroke-width="3"/><polygon points="50,18 78,34 78,66 50,82 22,66 22,34" fill="none" stroke="#38bdf8" stroke-opacity=".4"/><path d="M36 51 46 61 66 39" fill="none" stroke="#7dd3fc" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-<h2 id="celh">الغرفة مكتملة! 🎉</h2><p>أتممت <b id="celn"></b><br><span id="celp"></span></p>
+<h2 id="celh" data-i18n="room.complete">الغرفة مكتملة! 🎉</h2><p>أتممت <b id="celn"></b><br><span id="celp"></span></p>
 <a class="cta" href="self-learning.html">غرف أخرى · More rooms</a><a class="cta s" href="#" id="celclose">متابعة · Stay</a></div></div>
 <svg width="0" height="0"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#38bdf8"/></linearGradient></defs></svg>
 <script src="assets/room/engine.js?v=2"></script>
-</body></html>
+<script src="assets/i18n.js"></script></body></html>

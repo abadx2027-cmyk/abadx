@@ -1,0 +1,18 @@
+/* Abad X language switcher */
+html[data-lang=ar] .i18n-en{display:none!important}
+html[data-lang=en] .i18n-ar{display:none!important}
+/* English subtitle spans become the primary text in English mode */
+html[data-lang=en] .en.i18n-en{display:inline!important;font-size:inherit;color:inherit;letter-spacing:normal;font-family:inherit;margin:0}
+html[data-lang=en] body{font-family:Cairo,system-ui,sans-serif}
+.abx-lang{position:fixed;top:12px;inset-inline-end:12px;z-index:2147483000;min-width:52px;height:36px;padding:0 14px;
+  font:700 .9rem/1 Cairo,'JetBrains Mono',system-ui,sans-serif;letter-spacing:.5px;color:#38bdf8;cursor:pointer;
+  background:rgba(2,6,14,.82);border:1px solid #1d4b85;border-radius:999px;
+  box-shadow:0 0 0 1px rgba(56,189,248,.08),0 0 18px rgba(29,111,255,.25);backdrop-filter:blur(6px);transition:background .2s,color .2s,box-shadow .2s}
+.abx-lang:hover{background:#38bdf8;color:#00121f;box-shadow:0 0 22px rgba(56,189,248,.6)}
+.abx-lang:focus-visible{outline:2px solid #38bdf8;outline-offset:3px}
+/* keep existing top-corner controls clear of the toggle */
+.topbar,body > header.top{padding-inline-end:84px!important}
+body > a.out{top:58px!important}
+@media (prefers-reduced-motion:reduce){.abx-lang{transition:none}}
+html[data-lang=en] .ar,html[data-lang=en] .err{direction:ltr!important;text-align:left!important}
+html[data-lang=en] #msg{text-align:center!important}
